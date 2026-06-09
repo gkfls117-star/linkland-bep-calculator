@@ -10,6 +10,8 @@ import type { MarketMetrics, MarketStore } from "../types/market"
 
 const percent = (value: number): number => value / 100
 
+const remainingPercent = (value: number): number => 1 - percent(value)
+
 const lockedOnlineRateItemIds = new Set(["online_platform", "online_ads"])
 
 export const calculateOfflineMonthlyRevenue = (input: CalculatorInput): number =>
@@ -62,19 +64,21 @@ export const calculateTotals = (input: CalculatorInput): SectionTotals => {
 export const calculateBep = (input: CalculatorInput): CalculatorResult => {
   const calculatedInput = withCalculatedOfflineRevenue(input)
   const totals = calculateTotals(calculatedInput)
-  const offlineContribution = calculatedInput.offlineMonthlyRevenue * percent(calculatedInput.offlineMarginRate)
-  const onlineContribution = calculatedInput.onlineMonthlyRevenue * percent(calculatedInput.onlineMarginRate)
+  const offlineContribution = calculatedInput.offlineMonthlyRevenue * remainingPercent(calculatedInput.offlineMarginRate)
+  const onlineContribution = calculatedInput.onlineMonthlyRevenue * remainingPercent(calculatedInput.onlineMarginRate)
   const offlineNetProfit = offlineContribution - totals.offlineFixedMonthly
   const onlineNetProfit = onlineContribution - totals.onlineMonthlyCost
   const combinedMonthlyProfit = offlineNetProfit + onlineNetProfit
   const offlineBepRevenue =
-    calculatedInput.offlineMarginRate > 0 ? totals.offlineFixedMonthly / percent(calculatedInput.offlineMarginRate) : 0
+    calculatedInput.offlineMarginRate < 100
+      ? totals.offlineFixedMonthly / remainingPercent(calculatedInput.offlineMarginRate)
+      : 0
   const offlineBepVisitors =
     calculatedInput.avgOrderValue > 0 && calculatedInput.conversionRate > 0
       ? offlineBepRevenue / calculatedInput.avgOrderValue / percent(calculatedInput.conversionRate)
       : 0
   const paybackMonths =
-    combinedMonthlyProfit > 0 ? totals.nonRecoverableInvestment / combinedMonthlyProfit : null
+    combinedMonthlyProfit > 0 ? totals.initialCash / combinedMonthlyProfit : null
 
   return {
     offlineContribution,
@@ -89,7 +93,12 @@ export const calculateBep = (input: CalculatorInput): CalculatorResult => {
     offlineBepRevenue,
     offlineBepVisitors,
     riskLevel: riskLevel(combinedMonthlyProfit, paybackMonths),
-    transferRecovery: transferRecovery(calculatedInput, combinedMonthlyProfit, totals.nonRecoverableInvestment),
+    transferRecovery: transferRecovery(
+      calculatedInput,
+      combinedMonthlyProfit,
+      totals.initialCash,
+      totals.recoverableInvestment,
+    ),
     totals,
   }
 }
@@ -107,6 +116,7 @@ const transferRecovery = (
   input: CalculatorInput,
   combinedMonthlyProfit: number,
   initialCash: number,
+  recoverableInvestment: number,
 ): readonly TransferRecovery[] => {
   const premiums = [
     [2, input.transferPremiumYear2],
@@ -117,7 +127,7 @@ const transferRecovery = (
 
   return premiums.map(([year, premium]) => {
     const cumulativeProfit = combinedMonthlyProfit * year * 12
-    const recoveredAmount = cumulativeProfit + premium
+    const recoveredAmount = cumulativeProfit + premium + recoverableInvestment
     return {
       year,
       premium,
