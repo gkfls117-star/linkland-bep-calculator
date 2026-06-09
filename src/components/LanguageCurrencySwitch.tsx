@@ -2,6 +2,7 @@ import { RefreshCw, Settings } from "lucide-react"
 import type { Language, MoneyUnit } from "../types/calculator"
 import type { AppSettings } from "../lib/storage"
 import { localized, t } from "../lib/i18n"
+import { FormattedNumberInput } from "./FormattedNumberInput"
 
 type LanguageCurrencySwitchProps = {
   readonly settings: AppSettings
@@ -45,14 +46,11 @@ export const LanguageCurrencySwitch = ({
         </button>
         </div>
         <label className="grid w-24 gap-1 text-[10px] font-semibold uppercase text-[#7d7168]">
-          CNY {settings.exchangeRate} KRW
-          <input
-            className="rounded-md border border-slate-200 px-2 py-2 text-right text-sm text-[#111827]"
-            type="number"
+          CNY {new Intl.NumberFormat("en-US").format(settings.exchangeRate)} KRW
+          <FormattedNumberInput
+            className="px-2"
             value={settings.exchangeRate}
-            onChange={(event) =>
-              onSettingsChange({ ...settings, exchangeRate: Number(event.target.value) })
-            }
+            onChange={(exchangeRate) => onSettingsChange({ ...settings, exchangeRate })}
           />
         </label>
         <button

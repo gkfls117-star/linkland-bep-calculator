@@ -1,6 +1,7 @@
 import type { CalculatorInput, Language } from "../types/calculator"
 import { localized } from "../lib/i18n"
 import { DynamicItemEditor } from "./DynamicItemEditor"
+import { FormattedNumberInput } from "./FormattedNumberInput"
 
 type InputPanelProps = {
   readonly input: CalculatorInput
@@ -32,11 +33,11 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
             .map((field) => (
               <label key={field.key} className={rowClass(highlightedKey === field.key)}>
                 <span>{field.label}</span>
-                <input
-                  className="w-36 rounded-md border border-slate-200 bg-white px-3 py-2 text-right text-sm text-[#1f2937]"
-                  type="number"
+                <FormattedNumberInput
+                  className="w-36"
+                  decimals={field.unit === "%" ? 2 : 0}
                   value={Number(input[field.key])}
-                  onChange={(event) => setNumber(field.key, Number(event.target.value))}
+                  onChange={(value) => setNumber(field.key, value)}
                 />
                 <span className="w-8 text-xs text-[#7b746d]">{field.unit}</span>
               </label>
