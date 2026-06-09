@@ -26,7 +26,7 @@ type ApiErrorResponse = {
 
 type ApiResponse = ApiOkResponse | ApiErrorResponse
 
-type SheetsConfig = {
+export type SheetsConfig = {
   readonly url: string
   readonly writeKey: string
 }

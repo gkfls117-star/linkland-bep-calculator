@@ -27,22 +27,21 @@ export const loadSettings = (): AppSettings => {
   if (raw === null) return defaultSettings
   try {
     const value: unknown = JSON.parse(raw)
-    if (typeof value !== "object" || value === null) return defaultSettings
-    const record = value as Record<string, unknown>
-    return {
-      language: record["language"] === "zh" ? "zh" : "ko",
-      exchangeRate:
-        typeof record["exchangeRate"] === "number" ? record["exchangeRate"] : DEFAULT_EXCHANGE_RATE,
-      appsScriptUrl:
-        typeof record["appsScriptUrl"] === "string"
-          ? record["appsScriptUrl"]
-          : defaultSettings.appsScriptUrl,
-      writeKey:
-        typeof record["writeKey"] === "string" ? record["writeKey"] : defaultSettings.writeKey,
-    }
+    return normalizeStoredSettings(value, defaultSettings)
   } catch (error) {
     if (error instanceof SyntaxError) return defaultSettings
     throw error
+  }
+}
+
+export const normalizeStoredSettings = (value: unknown, fallback: AppSettings): AppSettings => {
+  if (!isRecord(value)) return fallback
+  return {
+    language: value["language"] === "zh" ? "zh" : "ko",
+    exchangeRate:
+      typeof value["exchangeRate"] === "number" ? value["exchangeRate"] : fallback.exchangeRate,
+    appsScriptUrl: nonEmptyStringOrFallback(value["appsScriptUrl"], fallback.appsScriptUrl),
+    writeKey: nonEmptyStringOrFallback(value["writeKey"], fallback.writeKey),
   }
 }
 
@@ -100,3 +99,9 @@ const normalizeCachedScenario = (value: unknown): Scenario | null => {
     isDeleted: record["isDeleted"] === true,
   }
 }
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null
+
+const nonEmptyStringOrFallback = (value: unknown, fallback: string): string =>
+  typeof value === "string" && value.trim().length > 0 ? value : fallback

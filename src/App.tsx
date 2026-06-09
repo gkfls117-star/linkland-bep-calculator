@@ -6,8 +6,6 @@ import {
   deleteMarketStoreFromSheets,
   deleteScenarioFromSheets,
   hasSheetsConfig,
-  listMarketStores,
-  listScenarios,
   saveMarketStoreToSheets,
   saveScenarioToSheets,
 } from "./lib/sheetsApi"
@@ -23,6 +21,8 @@ import {
 import type { CalculatorInput, MoneyUnit } from "./types/calculator"
 import type { MarketStore } from "./types/market"
 import type { Scenario, SyncState } from "./types/scenario"
+import { useScenarioAutosave } from "./hooks/useScenarioAutosave"
+import { useSheetsReload } from "./hooks/useSheetsReload"
 import { Dashboard } from "./components/Dashboard"
 import { InputPanel } from "./components/InputPanel"
 import { LanguageCurrencySwitch } from "./components/LanguageCurrencySwitch"
@@ -64,39 +64,28 @@ export const App = () => {
     }
   }, [])
 
-  const reload = useCallback(async (): Promise<void> => {
-    if (!hasSheetsConfig(sheetsConfig)) {
-      setSyncState({ kind: "local", message: localized("로컬 캐시 모드", "本地缓存模式", settings.language) })
-      return
-    }
-    setSyncState({ kind: "syncing", message: localized("Sheets 불러오는 중", "正在读取 Sheets", settings.language) })
-    try {
-      const [sheetScenarios, sheetStores] = await Promise.all([
-        listScenarios(sheetsConfig),
-        listMarketStores(sheetsConfig),
-      ])
-      if (sheetScenarios.length > 0) applyScenarios(sheetScenarios)
-      if (sheetStores.length > 0) {
-        setStores(sheetStores)
-        saveMarketStores(sheetStores)
-      }
-      setSyncState({ kind: "sheets", message: localized("Sheets 동기화 완료", "Sheets 同步完成", settings.language) })
-    } catch (error) {
-      if (error instanceof Error) {
-        setSyncState({ kind: "error", message: `${localized("로컬 fallback", "本地回退", settings.language)}: ${error.message}` })
-      } else {
-        setSyncState({ kind: "error", message: localized("로컬 fallback", "本地回退", settings.language) })
-      }
-    }
-  }, [applyScenarios, settings.language, sheetsConfig])
+  const { isReadyForAutosave, reload } = useSheetsReload({
+    applyScenarios,
+    language: settings.language,
+    setStores,
+    setSyncState,
+    sheetsConfig,
+  })
 
   useEffect(() => {
     saveSettings(settings)
   }, [settings])
 
-  useEffect(() => {
-    void reload()
-  }, [reload])
+  useScenarioAutosave({
+    activeScenarioId,
+    applyScenarios,
+    enabled: isReadyForAutosave,
+    input,
+    language: settings.language,
+    saveName,
+    setSyncState,
+    sheetsConfig,
+  })
 
   const selectScenario = (scenario: Scenario): void => {
     setActiveScenarioId(scenario.id)
