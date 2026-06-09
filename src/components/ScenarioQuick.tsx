@@ -22,28 +22,46 @@ export const ScenarioQuick = ({
   exchangeRate,
   onSelect,
 }: ScenarioQuickProps) => (
-  <CardBlock title={t("scenarioQuick", language)}>
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+  <CardBlock title={t("scenarioQuick", language)} className="p-5">
+    <p className="mb-3 text-sm text-[#6b625c]">
+      {localized("시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.", "载入方案会立即反映到输入值。保存请使用右侧保存框。", language)}
+    </p>
+    <div className="mb-3 rounded-2xl bg-[#f4f2ee] px-4 py-3 text-sm font-bold text-[#4f4841]">
+      {localized("현재 합산이익", "当前合计利润", language)}{" "}
+      {scenarios[0] !== undefined
+        ? formatMoney(calculateBep(scenarios[0].data).combinedMonthlyProfit, currency, exchangeRate, true)
+        : "-"}
+    </div>
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[640px] text-sm">
+        <thead className="bg-[#f4f2ee] text-xs text-[#4f4841]">
+          <tr>
+            <th className="px-3 py-3 text-left">{localized("시나리오", "方案", language)}</th>
+            <th className="px-3 py-3 text-right">{localized("합산매출", "合计销售额", language)}</th>
+            <th className="px-3 py-3 text-right">{localized("합산이익", "合计利润", language)}</th>
+            <th className="px-3 py-3 text-right">{localized("순투자 회수", "净投资回收", language)}</th>
+            <th className="px-3 py-3 text-center">{localized("작업", "操作", language)}</th>
+          </tr>
+        </thead>
+        <tbody>
       {scenarios.slice(0, 4).map((scenario) => {
         const result = calculateBep(scenario.data)
         return (
-          <button
-            type="button"
-            key={scenario.id}
-            onClick={() => onSelect(scenario)}
-            className={`rounded-lg border p-3 text-left hover:border-moss ${
-              scenario.id === activeId ? "border-moss bg-moss/10" : "border-line bg-white"
-            }`}
-          >
-            <p className="truncate text-sm font-bold text-ink">{scenario.name}</p>
-            <p className="mt-2 text-xs text-steel">{localized("월 순이익", "月净利润", language)}</p>
-            <p className="text-lg font-black text-ink">
-              {formatMoney(result.combinedMonthlyProfit, currency, exchangeRate, true)}
-            </p>
-            <p className="text-xs text-steel">{formatMonths(result.paybackMonths, language)}</p>
-          </button>
+          <tr key={scenario.id} className={`border-b border-slate-200 ${scenario.id === activeId ? "bg-[#fffbed]" : ""}`}>
+            <td className="px-3 py-3 font-bold text-[#111827]">{scenario.name}</td>
+            <td className="px-3 py-3 text-right">{formatMoney(scenario.data.offlineMonthlyRevenue + scenario.data.onlineMonthlyRevenue, currency, exchangeRate, true)}</td>
+            <td className="px-3 py-3 text-right">{formatMoney(result.combinedMonthlyProfit, currency, exchangeRate, true)}</td>
+            <td className="px-3 py-3 text-right">{formatMonths(result.paybackMonths, language)}</td>
+            <td className="px-3 py-3 text-center">
+              <button type="button" onClick={() => onSelect(scenario)} className="rounded-md border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-[#111827] shadow-sm">
+                {localized("불러오기", "载入", language)}
+              </button>
+            </td>
+          </tr>
         )
       })}
+        </tbody>
+      </table>
     </div>
   </CardBlock>
 )

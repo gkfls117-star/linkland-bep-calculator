@@ -29,6 +29,7 @@ import { LanguageCurrencySwitch } from "./components/LanguageCurrencySwitch"
 import { MarketAnalysis } from "./components/MarketAnalysis"
 import { ScenarioQuick } from "./components/ScenarioQuick"
 import { ScenarioTable } from "./components/ScenarioTable"
+import { SidebarNav } from "./components/SidebarNav"
 
 export const App = () => {
   const [settings, setSettings] = useState<AppSettings>(() => loadSettings())
@@ -168,16 +169,17 @@ export const App = () => {
   }
 
   return (
-    <main className="min-h-screen bg-paper">
-      <div className="mx-auto max-w-[1680px] px-4 py-4 lg:px-6">
-        <header className="mb-4 grid gap-3 lg:grid-cols-[1fr_420px]">
+    <main className="min-h-screen bg-[#fbfaf8] text-[#111827]">
+      <div className="mx-auto max-w-[1500px] px-4 py-5 lg:px-5">
+        <header className="mb-5 grid gap-3 lg:grid-cols-[1fr_360px]">
           <div>
-            <p className="text-sm font-semibold text-clay">{t("subtitle", settings.language)}</p>
-            <h1 className="text-3xl font-black tracking-normal text-ink">{t("title", settings.language)}</h1>
-            <p className="mt-2 max-w-2xl text-sm text-steel">
+            <h1 className="text-[26px] font-black tracking-normal text-[#05070d]">
+              {localized("성수 연무장길 링크랜드 BEP / 임차 투자 계산기", "圣水练武场路 Linkland BEP / 租赁投资计算器", settings.language)}
+            </h1>
+            <p className="mt-1 max-w-2xl text-sm text-[#6b625c]">
               {localized(
-                "GitHub Pages 정적 앱, Google Sheets 공용 DB, Apps Script JSONP API 기반",
-                "基于 GitHub Pages 静态应用、Google Sheets 公共数据库、Apps Script JSONP API",
+                "입력값 변경 시 대시보드가 바로 반영되는 안정 버전입니다.",
+                "输入值变化时仪表盘会立即反映的稳定版本。",
                 settings.language,
               )}
             </p>
@@ -191,7 +193,8 @@ export const App = () => {
             }}
           />
         </header>
-        <div className="grid gap-4 lg:grid-cols-[420px_1fr]">
+        <div className="grid items-start gap-4 min-[1350px]:grid-cols-[150px_440px_minmax(0,1fr)]">
+          <SidebarNav language={settings.language} />
           <InputPanel
             input={input}
             language={settings.language}

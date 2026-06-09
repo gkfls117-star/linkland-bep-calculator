@@ -49,12 +49,12 @@ export const MarketAnalysis = ({
   }
 
   return (
-    <CardBlock title={t("market", language)}>
+    <CardBlock title={t("market", language)} className="p-5" >
       <div className="mb-3 flex justify-end">
         <button
           type="button"
           onClick={addStore}
-          className="inline-flex items-center gap-1 rounded-md bg-moss px-3 py-2 text-sm font-semibold text-white"
+          className="inline-flex items-center gap-1 rounded-md bg-[#4f6f5a] px-4 py-2 text-sm font-black text-white"
         >
           <Plus size={15} /> {localized("매장 추가", "添加门店", language)}
         </button>
@@ -101,26 +101,26 @@ const MarketRow = ({
     onSave({ ...store, ...updates, updatedAt: new Date().toISOString() }, false)
 
   return (
-    <div className="rounded-lg border border-line bg-paper/40 p-3">
+    <div className="rounded-lg border border-[#dfd5c7] bg-[#fffdfa] p-3">
       <div className="grid gap-2 md:grid-cols-6">
         <input
-          className="rounded border border-line px-2 py-1 text-sm md:col-span-2"
+          className="rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm md:col-span-2"
           value={language === "zh" ? store.nameZh : store.nameKo}
           onChange={(event) =>
             patch(language === "zh" ? { nameZh: event.target.value } : { nameKo: event.target.value })
           }
         />
         <input
-          className="rounded border border-line px-2 py-1 text-sm md:col-span-2"
+          className="rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm md:col-span-2"
           value={language === "zh" ? store.categoryZh : store.categoryKo}
           onChange={(event) =>
             patch(language === "zh" ? { categoryZh: event.target.value } : { categoryKo: event.target.value })
           }
         />
-        <button type="button" className="rounded border border-line px-2 py-1 text-steel" onClick={() => onSave(store, false)}>
+        <button type="button" className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-[#5f6f7a]" onClick={() => onSave(store, false)}>
           <Save size={15} className="mx-auto" />
         </button>
-        <button type="button" className="rounded border border-line px-2 py-1 text-clay" onClick={() => onDelete(store)}>
+        <button type="button" className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-[#c65d3b]" onClick={() => onDelete(store)}>
           <Trash2 size={15} className="mx-auto" />
         </button>
       </div>
@@ -132,13 +132,13 @@ const MarketRow = ({
         <NumberInput label={localized("공헌이익률(%)", "贡献利润率(%)", language)} value={store.margin} onChange={(value) => patch({ margin: value })} />
       </div>
       <textarea
-        className="mt-2 w-full rounded border border-line px-2 py-1 text-sm"
+        className="mt-2 w-full rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm"
         value={language === "zh" ? store.noteZh : store.noteKo}
         onChange={(event) =>
           patch(language === "zh" ? { noteZh: event.target.value } : { noteKo: event.target.value })
         }
       />
-      <div className="mt-3 grid gap-2 text-xs text-steel md:grid-cols-4">
+      <div className="mt-3 grid gap-2 text-xs text-[#466270] md:grid-cols-4">
         <span>{localized("월 구매고객", "月购买客户", language)}: {formatNumber(metrics.monthlyCustomers, language)}</span>
         <span>{localized("필요 월 방문자", "所需月访客", language)}: {formatNumber(metrics.requiredVisitors, language)}</span>
         <span>{localized("일평균 방문자", "日均访客", language)}: {formatNumber(metrics.dailyVisitors, language)}</span>
@@ -162,7 +162,7 @@ const NumberInput = ({ label, value, onChange }: NumberInputProps) => (
   <label className="grid gap-1 text-xs text-steel">
     {label}
     <input
-      className="rounded border border-line px-2 py-1 text-right text-sm text-ink"
+      className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-right text-sm text-[#111827]"
       type="number"
       value={value}
       onChange={(event) => onChange(Number(event.target.value))}

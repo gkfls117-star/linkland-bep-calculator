@@ -8,11 +8,11 @@ type CardBlockProps = {
 }
 
 export const CardBlock = ({ title, eyebrow, children, className = "" }: CardBlockProps) => (
-  <section className={`min-w-0 rounded-lg border border-line bg-white/85 p-4 shadow-tight ${className}`}>
+  <section className={`soft-card min-w-0 p-5 ${className}`}>
     {eyebrow !== undefined && (
-      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-clay">{eyebrow}</p>
+      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#b45309]">{eyebrow}</p>
     )}
-    {title !== undefined && <h2 className="mb-3 text-lg font-bold text-ink">{title}</h2>}
+    {title !== undefined && <h2 className="mb-4 text-lg font-black text-[#05070d]">{title}</h2>}
     {children}
   </section>
 )

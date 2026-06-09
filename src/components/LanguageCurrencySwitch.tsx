@@ -1,4 +1,4 @@
-import { RefreshCw } from "lucide-react"
+import { RefreshCw, Settings } from "lucide-react"
 import type { Language, MoneyUnit } from "../types/calculator"
 import type { AppSettings } from "../lib/storage"
 import { localized, t } from "../lib/i18n"
@@ -23,68 +23,77 @@ export const LanguageCurrencySwitch = ({
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-lg border border-line bg-white/90 p-3 shadow-tight">
-      <div className="flex flex-wrap items-center gap-2">
+    <div className="soft-card flex flex-col gap-2 p-2">
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        <span className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-base font-black text-emerald-700">
+          {localized("흑자", "盈利", settings.language)}
+        </span>
+        <div className="flex rounded-2xl bg-[#211d19] p-1 shadow-sm">
         <button
           type="button"
           className={toggleClass(settings.language === "ko")}
           onClick={() => setLanguage("ko")}
         >
-          KRW
+          KR KRW
         </button>
         <button
           type="button"
           className={toggleClass(settings.language === "zh")}
           onClick={() => setLanguage("zh")}
         >
-          CNY
+          CN CNY
         </button>
-        <span className="text-xs text-steel">
-          {settings.language === "ko" ? "🇰🇷 KRW" : "🇨🇳 CNY"} · {selectedCurrency}
-        </span>
+        </div>
+        <label className="grid w-24 gap-1 text-[10px] font-semibold uppercase text-[#7d7168]">
+          CNY {settings.exchangeRate} KRW
+          <input
+            className="rounded-md border border-slate-200 px-2 py-2 text-right text-sm text-[#111827]"
+            type="number"
+            value={settings.exchangeRate}
+            onChange={(event) =>
+              onSettingsChange({ ...settings, exchangeRate: Number(event.target.value) })
+            }
+          />
+        </label>
         <button
           type="button"
           onClick={onReload}
-          className="ml-auto inline-flex h-8 w-8 items-center justify-center rounded-md border border-line text-steel hover:border-clay hover:text-clay"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-[#5f6f7a] hover:border-[#111827] hover:text-[#111827]"
           title={localized("동기화 새로고침", "刷新同步", settings.language)}
         >
           <RefreshCw size={15} />
         </button>
       </div>
-      <label className="grid gap-1 text-xs text-steel">
-        {t("exchangeRate", settings.language)} · 1 CNY = KRW
-        <input
-          className="rounded-md border border-line px-2 py-1 text-sm text-ink"
-          type="number"
-          value={settings.exchangeRate}
-          onChange={(event) =>
-            onSettingsChange({ ...settings, exchangeRate: Number(event.target.value) })
-          }
-        />
-      </label>
-      <label className="grid gap-1 text-xs text-steel">
-        {t("appsScriptUrl", settings.language)}
-        <input
-          className="rounded-md border border-line px-2 py-1 text-sm text-ink"
-          value={settings.appsScriptUrl}
-          placeholder="https://script.google.com/macros/s/..."
-          onChange={(event) => onSettingsChange({ ...settings, appsScriptUrl: event.target.value })}
-        />
-      </label>
-      <label className="grid gap-1 text-xs text-steel">
-        {t("writeKey", settings.language)}
-        <input
-          className="rounded-md border border-line px-2 py-1 text-sm text-ink"
-          value={settings.writeKey}
-          onChange={(event) => onSettingsChange({ ...settings, writeKey: event.target.value })}
-        />
-      </label>
-      <p className="text-xs text-steel">{syncMessage}</p>
+      <details className="rounded-xl bg-[#f7f5f1] px-3 py-2 text-xs text-[#5f6f7a]">
+        <summary className="flex cursor-pointer items-center gap-2 font-bold">
+          <Settings size={13} /> {localized("동기화 설정", "同步设置", settings.language)} · {selectedCurrency}
+        </summary>
+        <div className="mt-2 grid gap-2">
+          <label className="grid gap-1">
+            {t("appsScriptUrl", settings.language)}
+            <input
+              className="rounded-md border border-slate-200 px-2 py-1 text-sm text-[#111827]"
+              value={settings.appsScriptUrl}
+              placeholder="https://script.google.com/macros/s/..."
+              onChange={(event) => onSettingsChange({ ...settings, appsScriptUrl: event.target.value })}
+            />
+          </label>
+          <label className="grid gap-1">
+            {t("writeKey", settings.language)}
+            <input
+              className="rounded-md border border-slate-200 px-2 py-1 text-sm text-[#111827]"
+              value={settings.writeKey}
+              onChange={(event) => onSettingsChange({ ...settings, writeKey: event.target.value })}
+            />
+          </label>
+          <p>{syncMessage}</p>
+        </div>
+      </details>
     </div>
   )
 }
 
 const toggleClass = (active: boolean): string =>
-  `rounded-md border px-3 py-1 text-sm font-semibold ${
-    active ? "border-moss bg-moss text-white" : "border-line bg-white text-steel hover:border-moss"
+  `rounded-xl px-4 py-2 text-sm font-black transition ${
+    active ? "bg-white text-[#211d19]" : "text-white/80 hover:text-white"
   }`

@@ -1,4 +1,4 @@
-import { AlertTriangle, Banknote, Landmark, TrendingUp } from "lucide-react"
+import type { ReactNode } from "react"
 import type { CalculatorInput, CalculatorResult, Language, MoneyUnit } from "../types/calculator"
 import { formatMoney, formatMonths, formatNumber, formatPercent } from "../lib/format"
 import { localized, t } from "../lib/i18n"
@@ -32,72 +32,63 @@ export const Dashboard = ({
   onSaveAs,
   onHighlight,
 }: DashboardProps) => (
-  <div className="space-y-4">
-    <div className="grid gap-4 xl:grid-cols-4">
+  <div id="dashboard" className="space-y-5">
+    <div className="grid gap-3 md:grid-cols-2 min-[1350px]:grid-cols-[1fr_1fr_0.75fr_0.75fr_1.6fr]">
       <MetricCard
-        label={t("offline", language)}
+        label={localized("합산 월매출", "合计月销售额", language)}
+        value={formatMoney(input.offlineMonthlyRevenue + input.onlineMonthlyRevenue, currency, exchangeRate)}
+      />
+      <MetricCard
+        label={localized("합산 월 영업이익", "合计月营业利润", language)}
+        value={formatMoney(result.combinedMonthlyProfit, currency, exchangeRate)}
+      />
+      <MetricCard
+        tone="offline"
+        label={localized("오프라인 이익", "线下利润", language)}
         value={formatMoney(result.offlineNetProfit, currency, exchangeRate, true)}
-        detail={localized("월 순이익", "月净利润", language)}
-        icon={<Landmark size={18} />}
-        tip={localized("오프라인 매출 x 공헌이익률 - 고정비", "线下销售额 x 贡献利润率 - 固定费", language)}
-        onTip={(active) => onHighlight(active ? "offlineMonthlyRevenue" : null)}
       />
       <MetricCard
-        label={t("online", language)}
+        tone="online"
+        label={localized("온라인 이익", "线上利润", language)}
         value={formatMoney(result.onlineNetProfit, currency, exchangeRate, true)}
-        detail={localized("월 순이익", "月净利润", language)}
-        icon={<TrendingUp size={18} />}
-        tip={localized("온라인 매출 x 공헌이익률 - 온라인 비용", "线上销售额 x 贡献利润率 - 线上成本", language)}
-        onTip={(active) => onHighlight(active ? "onlineMonthlyRevenue" : null)}
       />
       <MetricCard
-        label={t("initialCash", language)}
-        value={formatMoney(result.initialCash, currency, exchangeRate, true)}
-        detail={localized("회수 가능 포함", "含可回收项目", language)}
-        icon={<Banknote size={18} />}
-        tip={localized("보증금, 권리금, 인테리어, 재고 등 초기 현금 합계", "保证金、转让费、装修、库存等初始现金合计", language)}
-        onTip={(active) => onHighlight(active ? "transferPremiumYear3" : null)}
-      />
-      <MetricCard
-        label={t("payback", language)}
-        value={formatMonths(result.paybackMonths, language)}
-        detail={riskLabel(result.riskLevel, language)}
-        icon={<AlertTriangle size={18} />}
-        tip={localized("초기 필요 현금 ÷ 합산 월 순이익", "初始现金 ÷ 合计月净利润", language)}
-        onTip={(active) => onHighlight(active ? "offlineMarginRate" : null)}
+        label={localized("투자비 / 회수", "投资 / 回收", language)}
+        value={`${formatMoney(result.initialCash, currency, exchangeRate, true)} · ${formatMonths(result.paybackMonths, language)}`}
       />
     </div>
-    <div className="grid gap-4 xl:grid-cols-[1fr_340px]">
-      <CardBlock title={t("combined", language)}>
-        <div className="grid gap-3 md:grid-cols-3">
-          <SummaryLine
-            label={localized("합산 월 순이익", "合计月净利润", language)}
-            value={formatMoney(result.combinedMonthlyProfit, currency, exchangeRate)}
-          />
-          <SummaryLine
-            label={localized("연간 순이익", "年净利润", language)}
-            value={formatMoney(result.yearlyProfit, currency, exchangeRate)}
-          />
-          <SummaryLine
-            label={localized("회수 가능 투자", "可回收投资", language)}
-            value={formatMoney(result.recoverableInvestment, currency, exchangeRate)}
-          />
-          <SummaryLine
-            label={t("bep", language)}
-            value={formatMoney(result.offlineBepRevenue, currency, exchangeRate)}
-            detail={`${formatNumber(result.offlineBepVisitors, language)} ${localized("월 방문자", "月访客", language)}`}
-          />
-          <SummaryLine
-            label={t("risk", language)}
-            value={riskLabel(result.riskLevel, language)}
-            detail={formatPercent(input.conversionRate, language)}
-          />
-          <SummaryLine
-            label={t("memo", language)}
-            value={input.judgmentMemo}
-            compact={true}
-          />
+    <div className="grid gap-5 lg:grid-cols-2 min-[1350px]:grid-cols-[1fr_1fr_260px]">
+      <ProfitCard title={t("offline", language)} tone="offline">
+        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(input.offlineMonthlyRevenue, currency, exchangeRate)} />
+        <SummaryLine label={localized("공헌이익", "贡献利润", language)} value={formatMoney(result.offlineContribution, currency, exchangeRate)} />
+        <SummaryLine label={localized("고정비", "固定费", language)} value={formatMoney(result.totals.offlineFixedMonthly, currency, exchangeRate)} />
+        <SummaryLine label={localized("영업이익", "营业利润", language)} value={formatMoney(result.offlineNetProfit, currency, exchangeRate, true)} />
+      </ProfitCard>
+      <ProfitCard title={t("online", language)} tone="online">
+        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(input.onlineMonthlyRevenue, currency, exchangeRate)} />
+        <SummaryLine label={localized("공헌이익", "贡献利润", language)} value={formatMoney(result.onlineContribution, currency, exchangeRate)} />
+        <SummaryLine label={localized("온라인 고정비", "线上固定费", language)} value={formatMoney(result.totals.onlineMonthlyCost, currency, exchangeRate)} />
+        <SummaryLine label={localized("순수익", "净利润", language)} value={formatMoney(result.onlineNetProfit, currency, exchangeRate, true)} />
+      </ProfitCard>
+      <CardBlock title={t("combined", language)} className="p-5">
+        <SummaryLine label={localized("합산 매출", "合计销售额", language)} value={formatMoney(input.offlineMonthlyRevenue + input.onlineMonthlyRevenue, currency, exchangeRate)} tip={localized("오프라인 + 온라인 매출", "线下 + 线上销售额", language)} onTip={(active) => onHighlight(active ? "offlineMonthlyRevenue" : null)} />
+        <SummaryLine label={localized("합산 영업이익", "合计营业利润", language)} value={formatMoney(result.combinedMonthlyProfit, currency, exchangeRate)} tip={localized("오프라인 이익 + 온라인 이익", "线下利润 + 线上利润", language)} onTip={(active) => onHighlight(active ? "onlineMonthlyRevenue" : null)} />
+        <SummaryLine label={t("initialCash", language)} value={formatMoney(result.initialCash, currency, exchangeRate)} tip={localized("초기 투자비 전체 합계", "初始投资总额", language)} onTip={(active) => onHighlight(active ? "transferPremiumYear3" : null)} />
+        <SummaryLine label={t("payback", language)} value={formatMonths(result.paybackMonths, language)} tip={localized("초기 필요 현금 ÷ 합산 월 영업이익", "初始现金 ÷ 合计月营业利润", language)} onTip={(active) => onHighlight(active ? "offlineMarginRate" : null)} />
+        <p className="mt-4 rounded-xl bg-[#f8f7f3] p-3 text-xs leading-relaxed text-[#5f6f7a]">
+          {input.judgmentMemo}
+        </p>
+        <div className="mt-4 space-y-2 border-t border-slate-200 pt-3">
+          <p className="text-xs font-black text-[#7b746d]">{t("currentSave", language)} · {scenarioName}</p>
+          <input className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm" value={saveName} onChange={(event) => onSaveNameChange(event.target.value)} />
+          <div className="grid grid-cols-2 gap-2">
+            <button className="rounded-md bg-[#111827] px-3 py-2 text-xs font-black text-white" type="button" onClick={onOverwrite}>{t("overwrite", language)}</button>
+            <button className="rounded-md border border-[#111827] px-3 py-2 text-xs font-black text-[#111827]" type="button" onClick={onSaveAs}>{t("saveAs", language)}</button>
+          </div>
         </div>
+      </CardBlock>
+    </div>
+    <CardBlock title={localized("2~5년차 양도/권리금 회수", "第2~5年转让费回收", language)} className="p-5">
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] text-sm">
             <thead>
@@ -127,62 +118,63 @@ export const Dashboard = ({
           </table>
         </div>
       </CardBlock>
-      <CardBlock title={t("currentSave", language)} eyebrow={scenarioName}>
-        <div className="space-y-2">
-          <input
-            className="w-full rounded-md border border-line px-3 py-2 text-sm"
-            value={saveName}
-            onChange={(event) => onSaveNameChange(event.target.value)}
-          />
-          <div className="grid grid-cols-2 gap-2">
-            <button className="rounded-md bg-moss px-3 py-2 text-sm font-semibold text-white" type="button" onClick={onOverwrite}>
-              {t("overwrite", language)}
-            </button>
-            <button className="rounded-md border border-moss px-3 py-2 text-sm font-semibold text-moss" type="button" onClick={onSaveAs}>
-              {t("saveAs", language)}
-            </button>
-          </div>
-        </div>
-      </CardBlock>
-    </div>
   </div>
 )
 
 type MetricCardProps = {
   readonly label: string
   readonly value: string
-  readonly detail: string
-  readonly icon: JSX.Element
-  readonly tip: string
-  readonly onTip: (active: boolean) => void
+  readonly tone?: "default" | "offline" | "online"
 }
 
-const MetricCard = ({ label, value, detail, icon, tip, onTip }: MetricCardProps) => (
-  <CardBlock>
-    <div className="flex items-start justify-between gap-3">
-      <span className="rounded-md bg-paper p-2 text-moss">{icon}</span>
-      <InfoTip text={tip} onToggle={onTip} />
-    </div>
-    <p className="mt-3 text-xs font-semibold text-steel">{label}</p>
-    <p className="mt-1 text-2xl font-black text-ink">{value}</p>
-    <p className="mt-1 text-xs text-steel">{detail}</p>
-  </CardBlock>
+const MetricCard = ({ label, value, tone = "default" }: MetricCardProps) => (
+  <div className={`soft-card min-h-[110px] p-4 ${toneClass(tone)}`}>
+    <p className="text-sm font-semibold text-[#7b746d]">{label}</p>
+    <p className="mt-3 text-xl font-black text-[#05070d]">{value}</p>
+  </div>
+)
+
+type ProfitCardProps = {
+  readonly title: string
+  readonly tone: "offline" | "online"
+  readonly children: ReactNode
+}
+
+const ProfitCard = ({ title, tone, children }: ProfitCardProps) => (
+  <section className={`rounded-[18px] border p-5 shadow-[0_2px_8px_rgba(15,23,42,0.08)] ${toneClass(tone)}`}>
+    <h2 className="mb-5 text-lg font-black text-[#05070d]">{title}</h2>
+    <div className="space-y-4">{children}</div>
+  </section>
 )
 
 type SummaryLineProps = {
   readonly label: string
   readonly value: string
-  readonly detail?: string
-  readonly compact?: boolean
+  readonly tip?: string
+  readonly onTip?: (active: boolean) => void
 }
 
-const SummaryLine = ({ label, value, detail, compact = false }: SummaryLineProps) => (
-  <div className="rounded-md border border-line bg-paper/50 p-3">
-    <p className="text-xs text-steel">{label}</p>
-    <p className={`${compact ? "text-sm" : "text-lg"} mt-1 font-bold text-ink`}>{value}</p>
-    {detail !== undefined && <p className="mt-1 text-xs text-steel">{detail}</p>}
+const SummaryLine = ({ label, value, tip, onTip }: SummaryLineProps) => (
+  <div className="flex items-center justify-between gap-3 border-b border-[#e6e0d8] pb-3 last:border-b-0">
+    <p className="flex items-center gap-1 text-sm text-[#4f4841]">
+      {label}
+      {tip !== undefined && onTip !== undefined && <InfoTip text={tip} onToggle={onTip} />}
+    </p>
+    <p className="text-right text-sm font-black text-[#05070d]">{value}</p>
   </div>
 )
+
+const toneClass = (tone: MetricCardProps["tone"]): string => {
+  switch (tone) {
+    case "offline":
+      return "border-[#f2df97] bg-[#fffbed]"
+    case "online":
+      return "border-[#cde7f8] bg-[#f0f9ff]"
+    case "default":
+    case undefined:
+      return "border-slate-200 bg-white"
+  }
+}
 
 const riskLabel = (risk: CalculatorResult["riskLevel"], language: Language): string => {
   switch (risk) {
