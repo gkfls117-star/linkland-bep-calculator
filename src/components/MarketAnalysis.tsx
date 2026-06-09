@@ -1,4 +1,4 @@
-import { Plus, Save, Trash2 } from "lucide-react"
+import { Plus, Trash2 } from "lucide-react"
 import type { Language, MoneyUnit } from "../types/calculator"
 import type { MarketStore } from "../types/market"
 import { marketMetrics } from "../lib/calc"
@@ -6,6 +6,7 @@ import { newId } from "../lib/defaults"
 import { formatMoney, formatNumber, formatPercent } from "../lib/format"
 import { localized, t } from "../lib/i18n"
 import { CardBlock } from "./CardBlock"
+import { EditableText } from "./EditableText"
 
 type MarketAnalysisProps = {
   readonly stores: readonly MarketStore[]
@@ -49,7 +50,7 @@ export const MarketAnalysis = ({
   }
 
   return (
-    <CardBlock title={t("market", language)} className="p-5" >
+    <CardBlock title={t("market", language)} className="p-5">
       <div className="mb-3 flex justify-end">
         <button
           type="button"
@@ -101,41 +102,47 @@ const MarketRow = ({
     onSave({ ...store, ...updates, updatedAt: new Date().toISOString() }, false)
 
   return (
-    <div className="rounded-lg border border-[#dfd5c7] bg-[#fffdfa] p-3">
-      <div className="grid gap-2 md:grid-cols-6">
-        <input
-          className="rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm md:col-span-2"
+    <div className="rounded-xl border border-[#e5dccf] bg-[#fffdfa] p-4">
+      <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_36px]">
+        <EditableText
+          ariaLabel={localized("매장명 수정", "编辑门店名", language)}
+          className="rounded-md border border-slate-200 bg-white px-3 py-2 font-bold"
+          inputClassName="font-bold"
           value={language === "zh" ? store.nameZh : store.nameKo}
-          onChange={(event) =>
-            patch(language === "zh" ? { nameZh: event.target.value } : { nameKo: event.target.value })
+          onChange={(value) =>
+            patch(language === "zh" ? { nameZh: value } : { nameKo: value })
           }
         />
-        <input
-          className="rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm md:col-span-2"
+        <EditableText
+          ariaLabel={localized("업종 수정", "编辑类别", language)}
+          className="rounded-md border border-slate-200 bg-white px-3 py-2"
           value={language === "zh" ? store.categoryZh : store.categoryKo}
-          onChange={(event) =>
-            patch(language === "zh" ? { categoryZh: event.target.value } : { categoryKo: event.target.value })
+          onChange={(value) =>
+            patch(language === "zh" ? { categoryZh: value } : { categoryKo: value })
           }
         />
-        <button type="button" className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-[#5f6f7a]" onClick={() => onSave(store, false)}>
-          <Save size={15} className="mx-auto" />
-        </button>
-        <button type="button" className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-[#c65d3b]" onClick={() => onDelete(store)}>
+        <button
+          type="button"
+          className="rounded-md border border-slate-200 bg-white px-2 py-2 text-[#c65d3b]"
+          onClick={() => onDelete(store)}
+        >
           <Trash2 size={15} className="mx-auto" />
         </button>
       </div>
-      <div className="mt-3 grid gap-2 md:grid-cols-5">
+      <div className="mt-3 grid gap-3 md:grid-cols-5">
         <NumberInput label={localized("월매출", "月销售额", language)} value={store.monthlyRevenue} onChange={(value) => patch({ monthlyRevenue: value })} />
         <NumberInput label={localized("피크 월매출", "峰值月销售额", language)} value={store.peakMonthlyRevenue} onChange={(value) => patch({ peakMonthlyRevenue: value })} />
         <NumberInput label={localized("객단가", "客单价", language)} value={store.avgOrderValue} onChange={(value) => patch({ avgOrderValue: value })} />
         <NumberInput label={localized("전환율(%)", "转化率(%)", language)} value={store.conversion} onChange={(value) => patch({ conversion: value })} />
         <NumberInput label={localized("공헌이익률(%)", "贡献利润率(%)", language)} value={store.margin} onChange={(value) => patch({ margin: value })} />
       </div>
-      <textarea
-        className="mt-2 w-full rounded border border-[#d9cfc1] bg-white px-3 py-2 text-sm"
+      <EditableText
+        ariaLabel={localized("설명 수정", "编辑说明", language)}
+        className="mt-3 block w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-[#4f4841]"
+        inputClassName="mt-3 w-full"
         value={language === "zh" ? store.noteZh : store.noteKo}
-        onChange={(event) =>
-          patch(language === "zh" ? { noteZh: event.target.value } : { noteKo: event.target.value })
+        onChange={(value) =>
+          patch(language === "zh" ? { noteZh: value } : { noteKo: value })
         }
       />
       <div className="mt-3 grid gap-2 text-xs text-[#466270] md:grid-cols-4">
@@ -161,11 +168,6 @@ type NumberInputProps = {
 const NumberInput = ({ label, value, onChange }: NumberInputProps) => (
   <label className="grid gap-1 text-xs text-steel">
     {label}
-    <input
-      className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-right text-sm text-[#111827]"
-      type="number"
-      value={value}
-      onChange={(event) => onChange(Number(event.target.value))}
-    />
+    <input className="rounded-md border border-slate-200 bg-white px-3 py-2 text-right text-sm text-[#111827] outline-none focus:border-[#111827]" type="number" value={value} onChange={(event) => onChange(Number(event.target.value))} />
   </label>
 )

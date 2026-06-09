@@ -2,6 +2,7 @@ import { Plus, Trash2 } from "lucide-react"
 import type { DynamicItem, ExpenseSection, Language } from "../types/calculator"
 import { createItem } from "../lib/defaults"
 import { localized } from "../lib/i18n"
+import { EditableText } from "./EditableText"
 
 type DynamicItemEditorProps = {
   readonly title: string
@@ -43,24 +44,29 @@ export const DynamicItemEditor = ({
           <Plus size={14} /> {localized("항목 추가", "添加项目", language)}
         </button>
       </div>
-      <div className="space-y-2">
+      <div className="rounded-xl border border-[#e5dccf] bg-[#fffdfa] px-3 py-1">
         {items.map((item) => (
-          <div key={item.id} className="grid min-w-0 grid-cols-[1fr_86px_56px_28px_72px_32px] items-center gap-2 rounded-md border border-[#dfd5c7] bg-[#fffdfa] p-2">
-            <input
-              className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-sm"
+          <div
+            key={item.id}
+            className="grid min-w-0 grid-cols-[minmax(0,1fr)_112px_68px_42px_76px_32px] items-center gap-2 border-b border-[#eee6dc] py-2 last:border-b-0"
+          >
+            <EditableText
+              ariaLabel={localized("항목명 수정", "编辑项目名", language)}
+              className="min-w-0 px-1"
+              inputClassName="min-w-0"
               value={language === "zh" ? item.nameZh : item.nameKo}
-              onChange={(event) =>
-                update(item.id, language === "zh" ? { nameZh: event.target.value } : { nameKo: event.target.value })
+              onChange={(value) =>
+                update(item.id, language === "zh" ? { nameZh: value } : { nameKo: value })
               }
             />
             <input
-              className="rounded border border-[#d9cfc1] bg-white px-2 py-2 text-right text-sm"
+              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-right text-sm text-[#1f2937] outline-none focus:border-[#111827]"
               type="number"
               value={item.value}
               onChange={(event) => update(item.id, { value: Number(event.target.value) })}
             />
             <select
-              className="rounded border border-[#d9cfc1] bg-white px-1 py-2 text-xs"
+              className="rounded-md border border-slate-200 bg-white px-2 py-2 text-xs text-[#1f2937] outline-none focus:border-[#111827]"
               value={item.type}
               onChange={(event) =>
                 update(item.id, { type: event.target.value === "rate" ? "rate" : "amount" })
@@ -69,10 +75,12 @@ export const DynamicItemEditor = ({
               <option value="amount">{localized("금액", "金额", language)}</option>
               <option value="rate">{localized("비율", "比例", language)}</option>
             </select>
-            <input
-              className="rounded border border-[#d9cfc1] bg-white px-1 py-2 text-center text-xs"
+            <EditableText
+              ariaLabel={localized("단위 수정", "编辑单位", language)}
+              className="rounded-md border border-slate-200 bg-white px-2 py-2 text-center text-xs"
+              inputClassName="px-1 text-center text-xs"
               value={item.unit}
-              onChange={(event) => update(item.id, { unit: event.target.value })}
+              onChange={(value) => update(item.id, { unit: value })}
             />
             {showRecoverable ? (
               <label className="flex items-center gap-1 text-xs text-[#5f6f7a]">
@@ -90,7 +98,7 @@ export const DynamicItemEditor = ({
               type="button"
               disabled={!item.removable}
               onClick={() => onChange(items.filter((candidate) => candidate.id !== item.id))}
-              className="inline-flex h-8 w-8 items-center justify-center rounded border border-[#d9cfc1] text-[#5f6f7a] hover:border-[#c65d3b] hover:text-[#c65d3b] disabled:cursor-not-allowed disabled:opacity-30"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-slate-200 bg-white text-[#5f6f7a] hover:border-[#c65d3b] hover:text-[#c65d3b] disabled:cursor-not-allowed disabled:opacity-30"
             >
               <Trash2 size={15} />
             </button>
