@@ -27,6 +27,13 @@ export const FormattedNumberInput = ({
     setDraft(formatInputNumber(parsed, decimals))
   }
 
+  const updateDraft = (rawValue: string): void => {
+    const nextDraft = formatTypingNumber(rawValue)
+    setDraft(nextDraft)
+    const committed = committedTypingNumber(nextDraft)
+    if (committed !== null) onChange(committed)
+  }
+
   return (
     <input
       aria-label={ariaLabel}
@@ -34,7 +41,7 @@ export const FormattedNumberInput = ({
       inputMode="decimal"
       value={draft}
       onBlur={(event) => save(event.target.value)}
-      onChange={(event) => setDraft(formatTypingNumber(event.target.value))}
+      onChange={(event) => updateDraft(event.target.value)}
       onKeyDown={(event) => {
         if (event.key === "Enter") save(event.currentTarget.value)
       }}
@@ -47,6 +54,13 @@ const parseInputNumber = (value: string): number => {
   if (normalized.length === 0) return 0
   const parsed = Number(normalized)
   return Number.isFinite(parsed) ? parsed : 0
+}
+
+export const committedTypingNumber = (value: string): number | null => {
+  const normalized = value.replace(/,/g, "").trim()
+  if (normalized === "" || normalized === "-" || normalized === "." || normalized === "-.") return null
+  const parsed = Number(normalized)
+  return Number.isFinite(parsed) ? parsed : null
 }
 
 const formatInputNumber = (value: number, decimals: number): string =>
