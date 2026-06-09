@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { calculateBep, marketMetrics } from "./calc"
+import { calculateBep, calculateOfflineMonthlyRevenue, marketMetrics } from "./calc"
 import { defaultInput, defaultMarketStores } from "./defaults"
 
 describe("calculateBep", () => {
@@ -19,6 +19,53 @@ describe("calculateBep", () => {
     expect(result.initialCash).toBe(760000000)
     expect(result.recoverableInvestment).toBe(580000000)
     expect(result.totals.nonRecoverableInvestment).toBe(180000000)
+  })
+
+  it("Given visitor assumptions When calculating offline revenue Then monthly sales are derived automatically", () => {
+    const input = { ...defaultInput, offlineMonthlyRevenue: 1 }
+    const result = calculateBep(input)
+
+    expect(calculateOfflineMonthlyRevenue(input)).toBe(60000000)
+    expect(result.offlineContribution).toBe(37200000)
+  })
+
+  it("Given locked online rate costs When calculating online profit Then they stay proportional to online revenue", () => {
+    const input = {
+      ...defaultInput,
+      onlineMonthlyRevenue: 100000000,
+      onlineCosts: defaultInput.onlineCosts.map((item) =>
+        item.id === "online_platform" ? { ...item, type: "amount" as const } : item,
+      ),
+    }
+
+    const result = calculateBep(input)
+
+    expect(result.totals.onlineMonthlyCost).toBe(15300000)
+  })
+
+  it("Given recoverable investment When calculating payback Then only net investment is recovered", () => {
+    const recoverableItem = defaultInput.investment.find((item) => item.id === "invest_deposit")
+    const nonRecoverableItem = defaultInput.investment.find((item) => item.id === "invest_fitout")
+    expect(recoverableItem).toBeDefined()
+    expect(nonRecoverableItem).toBeDefined()
+    if (recoverableItem === undefined || nonRecoverableItem === undefined) return
+
+    const input = {
+      ...defaultInput,
+      offlineFixed: [],
+      onlineCosts: [],
+      onlineMonthlyRevenue: 0,
+      investment: [
+        { ...recoverableItem, value: 80000000, recoverable: true },
+        { ...nonRecoverableItem, value: 20000000, recoverable: false },
+      ],
+    }
+
+    const result = calculateBep(input)
+
+    expect(result.initialCash).toBe(100000000)
+    expect(result.totals.nonRecoverableInvestment).toBe(20000000)
+    expect(result.paybackMonths).toBeCloseTo(20000000 / result.combinedMonthlyProfit)
   })
 })
 

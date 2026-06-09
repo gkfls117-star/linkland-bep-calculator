@@ -30,6 +30,7 @@ export const DynamicItemEditor = ({
   }
 
   const updateType = (item: DynamicItem, type: DynamicItem["type"]): void => {
+    if (isLockedOnlineRateItem(section, item)) return
     update(item.id, { type, unit: type === "rate" ? "%" : localized("원", "元", language) })
     setOpenTypeItemId(null)
   }
@@ -43,8 +44,8 @@ export const DynamicItemEditor = ({
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-black text-[#1f1b16]">{title}</h3>
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <h3 className={sectionTitleClass(section)}>{title}</h3>
         <button
           type="button"
           className="inline-flex items-center gap-1 rounded-md border border-[#d9cfc1] bg-white px-3 py-1 text-xs font-bold text-[#5f6f7a] hover:border-[#4f6f5a]"
@@ -54,35 +55,46 @@ export const DynamicItemEditor = ({
         </button>
       </div>
       <div className="space-y-2">
-        {items.map((item) => (
+        {items.map((item) => {
+          const lockedOnlineRate = isLockedOnlineRateItem(section, item)
+          const itemType = lockedOnlineRate ? "rate" : item.type
+          const itemName = lockedOnlineRate ? lockedOnlineRateName(item.id, language) : null
+          return (
           <div key={item.id} className="space-y-1">
             <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_144px_34px_32px] items-center gap-2 rounded-md py-1 text-sm text-[#4f4841] transition-colors hover:bg-[#faf8f3]">
-              <EditableText
-                ariaLabel={localized("항목명 수정", "编辑项目名", language)}
-                className="min-w-0 whitespace-normal pr-2 leading-relaxed"
-                inputClassName="min-w-0 w-full"
-                truncate={false}
-                value={language === "zh" ? item.nameZh : item.nameKo}
-                onChange={(value) =>
-                  update(item.id, language === "zh" ? { nameZh: value } : { nameKo: value })
-                }
-              />
+              {itemName === null ? (
+                <EditableText
+                  ariaLabel={localized("항목명 수정", "编辑项目名", language)}
+                  className="min-w-0 whitespace-normal pr-2 leading-relaxed"
+                  inputClassName="min-w-0 w-full"
+                  truncate={false}
+                  value={language === "zh" ? item.nameZh : item.nameKo}
+                  onChange={(value) =>
+                    update(item.id, language === "zh" ? { nameZh: value } : { nameKo: value })
+                  }
+                />
+              ) : (
+                <span className="min-w-0 whitespace-normal pr-2 text-sm leading-relaxed text-[#4f4841]">
+                  {itemName}
+                </span>
+              )}
               <FormattedNumberInput
                 className="w-full"
-                decimals={item.type === "rate" ? 2 : 0}
+                decimals={itemType === "rate" ? 2 : 0}
                 value={item.value}
                 onChange={(value) => update(item.id, { value })}
               />
               <UnitTypeButton
-                item={item}
+                itemType={itemType}
                 language={language}
+                disabled={lockedOnlineRate}
                 open={openTypeItemId === item.id}
                 onToggle={() => setOpenTypeItemId(openTypeItemId === item.id ? null : item.id)}
                 onSelect={(type) => updateType(item, type)}
               />
               <button
                 type="button"
-                disabled={!item.removable}
+                disabled={!item.removable || lockedOnlineRate}
                 onClick={() => onChange(items.filter((candidate) => candidate.id !== item.id))}
                 className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-[#9a938b] hover:border-[#c65d3b] hover:bg-white hover:text-[#c65d3b] disabled:cursor-not-allowed disabled:opacity-25"
               >
@@ -102,30 +114,33 @@ export const DynamicItemEditor = ({
               </div>
             )}
           </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
 }
 
 type UnitTypeButtonProps = {
-  readonly item: DynamicItem
+  readonly itemType: DynamicItem["type"]
   readonly language: Language
+  readonly disabled: boolean
   readonly open: boolean
   readonly onToggle: () => void
   readonly onSelect: (type: DynamicItem["type"]) => void
 }
 
-const UnitTypeButton = ({ item, language, open, onToggle, onSelect }: UnitTypeButtonProps) => (
+const UnitTypeButton = ({ itemType, language, disabled, open, onToggle, onSelect }: UnitTypeButtonProps) => (
   <div className="relative">
     <button
       type="button"
-      className="h-10 w-full rounded-md border border-transparent bg-transparent text-center text-xs text-[#7b746d] hover:border-slate-200 hover:bg-white"
+      disabled={disabled}
+      className="h-10 w-full rounded-md border border-transparent bg-transparent text-center text-xs text-[#7b746d] hover:border-slate-200 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
       onClick={onToggle}
     >
-      {item.type === "rate" ? "%" : localized("원", "元", language)}
+      {itemType === "rate" ? "%" : localized("원", "元", language)}
     </button>
-    {open && (
+    {open && !disabled && (
       <div className="absolute right-0 top-11 z-30 w-24 rounded-md border border-slate-200 bg-white p-1 shadow-lg">
         <button
           type="button"
@@ -145,3 +160,16 @@ const UnitTypeButton = ({ item, language, open, onToggle, onSelect }: UnitTypeBu
     )}
   </div>
 )
+
+const sectionTitleClass = (section: ExpenseSection): string => {
+  const color = section === "onlineCosts" ? "bg-[#edf7ff] text-[#0369a1]" : "bg-[#fbf5df] text-[#b45309]"
+  return `rounded-xl px-3 py-2 text-sm font-black ${color}`
+}
+
+const isLockedOnlineRateItem = (section: ExpenseSection, item: DynamicItem): boolean =>
+  section === "onlineCosts" && (item.id === "online_platform" || item.id === "online_ads")
+
+const lockedOnlineRateName = (itemId: string, language: Language): string =>
+  itemId === "online_platform"
+    ? localized("플랫폼/PG 수수료", "平台/支付手续费", language)
+    : localized("온라인 광고비", "线上广告费", language)

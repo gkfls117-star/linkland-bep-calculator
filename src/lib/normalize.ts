@@ -2,6 +2,7 @@ import { z } from "zod"
 import type { CalculatorInput } from "../types/calculator"
 import type { MarketStore } from "../types/market"
 import type { Scenario, ScenarioRow } from "../types/scenario"
+import { withCalculatedOfflineRevenue } from "./calc"
 import { defaultInput } from "./defaults"
 
 const itemSchema = z.object({
@@ -61,8 +62,8 @@ const marketStoreSchema = z.object({
 
 export const normalizeInput = (value: unknown): CalculatorInput => {
   const parsed = inputSchema.safeParse(value)
-  if (parsed.success) return parsed.data
-  return defaultInput
+  if (parsed.success) return withCalculatedOfflineRevenue(parsed.data)
+  return withCalculatedOfflineRevenue(defaultInput)
 }
 
 export const normalizeScenarioRows = (value: unknown): readonly Scenario[] => {

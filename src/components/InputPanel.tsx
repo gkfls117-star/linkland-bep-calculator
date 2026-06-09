@@ -1,4 +1,5 @@
 import type { CalculatorInput, Language } from "../types/calculator"
+import { withCalculatedOfflineRevenue } from "../lib/calc"
 import { localized } from "../lib/i18n"
 import { DynamicItemEditor } from "./DynamicItemEditor"
 import { FormattedNumberInput } from "./FormattedNumberInput"
@@ -12,7 +13,7 @@ type InputPanelProps = {
 
 export const InputPanel = ({ input, language, highlightedKey, onChange }: InputPanelProps) => {
   const setNumber = (key: keyof CalculatorInput, value: number): void => {
-    onChange({ ...input, [key]: value })
+    onChange(withCalculatedOfflineRevenue({ ...input, [key]: value }))
   }
 
   return (
@@ -36,8 +37,11 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
                 <FormattedNumberInput
                   className="w-36"
                   decimals={field.unit === "%" ? 2 : 0}
+                  readOnly={field.readOnly === true}
                   value={Number(input[field.key])}
-                  onChange={(value) => setNumber(field.key, value)}
+                  onChange={(value) => {
+                    if (field.readOnly !== true) setNumber(field.key, value)
+                  }}
                 />
                 <span className="w-8 text-xs text-[#7b746d]">{field.unit}</span>
               </label>
@@ -98,13 +102,14 @@ type NumberField = {
   readonly label: string
   readonly unit: string
   readonly group: "offline" | "cost" | "online" | "transfer"
+  readonly readOnly?: boolean
 }
 
 const numberFields = (language: Language): readonly NumberField[] => [
   { key: "monthlyVisitors", label: localized("월 방문객", "月访客", language), unit: localized("명", "人", language), group: "offline" },
   { key: "conversionRate", label: localized("구매 전환율", "购买转化率", language), unit: "%", group: "offline" },
   { key: "avgOrderValue", label: localized("객단가", "客单价", language), unit: localized("원", "韩元", language), group: "offline" },
-  { key: "offlineMonthlyRevenue", label: localized("오프라인 월매출", "线下月销售额", language), unit: localized("원", "韩元", language), group: "offline" },
+  { key: "offlineMonthlyRevenue", label: localized("오프라인 월매출", "线下月销售额", language), unit: localized("원", "韩元", language), group: "offline", readOnly: true },
   { key: "offlineMarginRate", label: localized("자체 제조 제품 원가율", "自制产品成本率", language), unit: "%", group: "cost" },
   { key: "onlineMonthlyRevenue", label: localized("온라인 월매출", "线上月销售额", language), unit: localized("원", "韩元", language), group: "online" },
   { key: "onlineMarginRate", label: localized("온라인 제품 원가율", "线上产品成本率", language), unit: "%", group: "online" },

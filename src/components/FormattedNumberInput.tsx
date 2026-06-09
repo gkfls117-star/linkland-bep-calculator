@@ -5,6 +5,7 @@ type FormattedNumberInputProps = {
   readonly className?: string
   readonly ariaLabel?: string
   readonly decimals?: number
+  readonly readOnly?: boolean
   readonly onChange: (value: number) => void
 }
 
@@ -13,6 +14,7 @@ export const FormattedNumberInput = ({
   className = "",
   ariaLabel,
   decimals = 2,
+  readOnly = false,
   onChange,
 }: FormattedNumberInputProps) => {
   const [draft, setDraft] = useState(formatInputNumber(value, decimals))
@@ -28,6 +30,7 @@ export const FormattedNumberInput = ({
   }
 
   const updateDraft = (rawValue: string): void => {
+    if (readOnly) return
     const nextDraft = formatTypingNumber(rawValue)
     setDraft(nextDraft)
     const committed = committedTypingNumber(nextDraft)
@@ -37,8 +40,11 @@ export const FormattedNumberInput = ({
   return (
     <input
       aria-label={ariaLabel}
-      className={`rounded-md border border-slate-200 bg-white px-3 py-2 text-right text-sm text-[#1f2937] outline-none focus:border-[#111827] ${className}`}
+      className={`rounded-md border border-slate-200 px-3 py-2 text-right text-sm text-[#1f2937] outline-none focus:border-[#111827] ${
+        readOnly ? "bg-[#f8fafc]" : "bg-white"
+      } ${className}`}
       inputMode="decimal"
+      readOnly={readOnly}
       value={draft}
       onBlur={(event) => save(event.target.value)}
       onChange={(event) => updateDraft(event.target.value)}

@@ -74,7 +74,7 @@ export const Dashboard = ({
         <SummaryLine label={localized("합산 매출", "合计销售额", language)} value={formatMoney(input.offlineMonthlyRevenue + input.onlineMonthlyRevenue, currency, exchangeRate)} tip={localized("오프라인 + 온라인 매출", "线下 + 线上销售额", language)} onTip={(active) => onHighlight(active ? "offlineMonthlyRevenue" : null)} />
         <SummaryLine label={localized("합산 영업이익", "合计营业利润", language)} value={formatMoney(result.combinedMonthlyProfit, currency, exchangeRate)} tip={localized("오프라인 이익 + 온라인 이익", "线下利润 + 线上利润", language)} onTip={(active) => onHighlight(active ? "onlineMonthlyRevenue" : null)} />
         <SummaryLine label={t("initialCash", language)} value={formatMoney(result.initialCash, currency, exchangeRate)} tip={localized("초기 투자비 전체 합계", "初始投资总额", language)} onTip={(active) => onHighlight(active ? "transferPremiumYear3" : null)} />
-        <SummaryLine label={t("payback", language)} value={formatMonths(result.paybackMonths, language)} tip={localized("초기 필요 현금 ÷ 합산 월 영업이익", "初始现金 ÷ 合计月营业利润", language)} onTip={(active) => onHighlight(active ? "offlineMarginRate" : null)} />
+        <SummaryLine label={t("payback", language)} value={formatMonths(result.paybackMonths, language)} tip={localized("순투자금(초기 현금 - 회수 가능 투자비) ÷ 합산 월 영업이익", "净投资额（初始现金 - 可回收投资）÷ 合计月营业利润", language)} onTip={(active) => onHighlight(active ? "offlineMarginRate" : null)} />
         <p className="mt-4 rounded-xl bg-[#f8f7f3] p-3 text-xs leading-relaxed text-[#5f6f7a]">
           {input.judgmentMemo}
         </p>

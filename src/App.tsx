@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { calculateBep } from "./lib/calc"
+import { calculateBep, withCalculatedOfflineRevenue } from "./lib/calc"
 import { defaultScenario, newId } from "./lib/defaults"
 import { localized, t } from "./lib/i18n"
 import {
@@ -36,7 +36,9 @@ export const App = () => {
   const [scenarios, setScenarios] = useState<readonly Scenario[]>(() => loadScenarios())
   const [stores, setStores] = useState<readonly MarketStore[]>(() => loadMarketStores())
   const [activeScenarioId, setActiveScenarioId] = useState<string>(() => loadScenarios()[0]?.id ?? "default")
-  const [input, setInput] = useState<CalculatorInput>(() => loadScenarios()[0]?.data ?? defaultScenario().data)
+  const [input, setInput] = useState<CalculatorInput>(() =>
+    withCalculatedOfflineRevenue(loadScenarios()[0]?.data ?? defaultScenario().data),
+  )
   const [saveName, setSaveName] = useState(() => loadScenarios()[0]?.name ?? "링크랜드 현재 가정")
   const [highlightedKey, setHighlightedKey] = useState<string | null>(null)
   const [syncState, setSyncState] = useState<SyncState>({
@@ -53,13 +55,15 @@ export const App = () => {
   const activeScenario = scenarios.find((scenario) => scenario.id === activeScenarioId)
 
   const applyScenarios = useCallback((next: readonly Scenario[]): void => {
-    const visible = next.filter((scenario) => !scenario.isDeleted)
+    const visible = next
+      .filter((scenario) => !scenario.isDeleted)
+      .map((scenario) => ({ ...scenario, data: withCalculatedOfflineRevenue(scenario.data) }))
     setScenarios(visible)
     saveScenarios(visible)
     const first = visible[0]
     if (first !== undefined) {
       setActiveScenarioId(first.id)
-      setInput(first.data)
+      setInput(withCalculatedOfflineRevenue(first.data))
       setSaveName(first.name)
     }
   }, [])
@@ -89,7 +93,7 @@ export const App = () => {
 
   const selectScenario = (scenario: Scenario): void => {
     setActiveScenarioId(scenario.id)
-    setInput(scenario.data)
+    setInput(withCalculatedOfflineRevenue(scenario.data))
     setSaveName(scenario.name)
   }
 
@@ -98,7 +102,7 @@ export const App = () => {
     const scenario: Scenario = {
       id: isNew ? newId("scenario") : activeScenarioId,
       name: saveName.trim().length > 0 ? saveName.trim() : localized("새 시나리오", "新方案", settings.language),
-      data: input,
+      data: withCalculatedOfflineRevenue(input),
       updatedAt: now,
       updatedBy: "browser",
       isDeleted: false,
@@ -188,7 +192,7 @@ export const App = () => {
             input={input}
             language={settings.language}
             highlightedKey={highlightedKey}
-            onChange={setInput}
+            onChange={(next) => setInput(withCalculatedOfflineRevenue(next))}
           />
           <section className="min-w-0 space-y-4">
             <Dashboard

@@ -1,6 +1,6 @@
 import type { CalculatorResult, Language, MoneyUnit } from "../types/calculator"
 import type { Scenario } from "../types/scenario"
-import { calculateBep } from "../lib/calc"
+import { calculateBep, withCalculatedOfflineRevenue } from "../lib/calc"
 import { formatMoney, formatMonths } from "../lib/format"
 import { localized, t } from "../lib/i18n"
 import { CardBlock } from "./CardBlock"
@@ -29,7 +29,7 @@ export const ScenarioQuick = ({
     <div className="mb-3 rounded-2xl bg-[#f4f2ee] px-4 py-3 text-sm font-bold text-[#4f4841]">
       {localized("현재 합산이익", "当前合计利润", language)}{" "}
       {scenarios[0] !== undefined
-        ? formatMoney(calculateBep(scenarios[0].data).combinedMonthlyProfit, currency, exchangeRate, true)
+        ? formatMoney(calculateBep(withCalculatedOfflineRevenue(scenarios[0].data)).combinedMonthlyProfit, currency, exchangeRate, true)
         : "-"}
     </div>
     <div className="overflow-x-auto">
@@ -45,11 +45,12 @@ export const ScenarioQuick = ({
         </thead>
         <tbody>
       {scenarios.slice(0, 4).map((scenario) => {
-        const result = calculateBep(scenario.data)
+        const scenarioInput = withCalculatedOfflineRevenue(scenario.data)
+        const result = calculateBep(scenarioInput)
         return (
           <tr key={scenario.id} className={`border-b border-slate-200 ${scenario.id === activeId ? "bg-[#fffbed]" : ""}`}>
             <td className="px-3 py-3 font-bold text-[#111827]">{scenario.name}</td>
-            <td className="px-3 py-3 text-right">{formatMoney(scenario.data.offlineMonthlyRevenue + scenario.data.onlineMonthlyRevenue, currency, exchangeRate, true)}</td>
+            <td className="px-3 py-3 text-right">{formatMoney(scenarioInput.offlineMonthlyRevenue + scenarioInput.onlineMonthlyRevenue, currency, exchangeRate, true)}</td>
             <td className="px-3 py-3 text-right">{formatMoney(result.combinedMonthlyProfit, currency, exchangeRate, true)}</td>
             <td className="px-3 py-3 text-right">{formatMonths(result.paybackMonths, language)}</td>
             <td className="px-3 py-3 text-center">

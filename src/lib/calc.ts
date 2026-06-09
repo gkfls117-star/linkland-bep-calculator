@@ -10,12 +10,27 @@ import type { MarketMetrics, MarketStore } from "../types/market"
 
 const percent = (value: number): number => value / 100
 
+const lockedOnlineRateItemIds = new Set(["online_platform", "online_ads"])
+
+export const calculateOfflineMonthlyRevenue = (input: CalculatorInput): number =>
+  input.monthlyVisitors * percent(input.conversionRate) * input.avgOrderValue
+
+export const withCalculatedOfflineRevenue = (input: CalculatorInput): CalculatorInput => ({
+  ...input,
+  offlineMonthlyRevenue: calculateOfflineMonthlyRevenue(input),
+})
+
+const effectiveItemType = (item: DynamicItem, section: ExpenseSection): DynamicItem["type"] => {
+  if (section === "onlineCosts" && lockedOnlineRateItemIds.has(item.id)) return "rate"
+  return item.type
+}
+
 const itemCost = (
   item: DynamicItem,
   section: ExpenseSection,
   input: CalculatorInput,
 ): number => {
-  if (item.type === "amount") return item.value
+  if (effectiveItemType(item, section) === "amount") return item.value
   if (section === "onlineCosts") return input.onlineMonthlyRevenue * percent(item.value)
   if (section === "offlineFixed") return input.offlineMonthlyRevenue * percent(item.value)
   return input.offlineMonthlyRevenue * percent(item.value)
@@ -28,15 +43,16 @@ export const sumSection = (
 ): number => items.reduce((total, item) => total + itemCost(item, section, input), 0)
 
 export const calculateTotals = (input: CalculatorInput): SectionTotals => {
-  const initialCash = sumSection(input.investment, "investment", input)
-  const recoverableInvestment = input.investment.reduce(
-    (total, item) => total + (item.recoverable === true ? itemCost(item, "investment", input) : 0),
+  const calculatedInput = withCalculatedOfflineRevenue(input)
+  const initialCash = sumSection(calculatedInput.investment, "investment", calculatedInput)
+  const recoverableInvestment = calculatedInput.investment.reduce(
+    (total, item) => total + (item.recoverable === true ? itemCost(item, "investment", calculatedInput) : 0),
     0,
   )
 
   return {
-    offlineFixedMonthly: sumSection(input.offlineFixed, "offlineFixed", input),
-    onlineMonthlyCost: sumSection(input.onlineCosts, "onlineCosts", input),
+    offlineFixedMonthly: sumSection(calculatedInput.offlineFixed, "offlineFixed", calculatedInput),
+    onlineMonthlyCost: sumSection(calculatedInput.onlineCosts, "onlineCosts", calculatedInput),
     initialCash,
     recoverableInvestment,
     nonRecoverableInvestment: initialCash - recoverableInvestment,
@@ -44,20 +60,21 @@ export const calculateTotals = (input: CalculatorInput): SectionTotals => {
 }
 
 export const calculateBep = (input: CalculatorInput): CalculatorResult => {
-  const totals = calculateTotals(input)
-  const offlineContribution = input.offlineMonthlyRevenue * percent(input.offlineMarginRate)
-  const onlineContribution = input.onlineMonthlyRevenue * percent(input.onlineMarginRate)
+  const calculatedInput = withCalculatedOfflineRevenue(input)
+  const totals = calculateTotals(calculatedInput)
+  const offlineContribution = calculatedInput.offlineMonthlyRevenue * percent(calculatedInput.offlineMarginRate)
+  const onlineContribution = calculatedInput.onlineMonthlyRevenue * percent(calculatedInput.onlineMarginRate)
   const offlineNetProfit = offlineContribution - totals.offlineFixedMonthly
   const onlineNetProfit = onlineContribution - totals.onlineMonthlyCost
   const combinedMonthlyProfit = offlineNetProfit + onlineNetProfit
   const offlineBepRevenue =
-    input.offlineMarginRate > 0 ? totals.offlineFixedMonthly / percent(input.offlineMarginRate) : 0
+    calculatedInput.offlineMarginRate > 0 ? totals.offlineFixedMonthly / percent(calculatedInput.offlineMarginRate) : 0
   const offlineBepVisitors =
-    input.avgOrderValue > 0 && input.conversionRate > 0
-      ? offlineBepRevenue / input.avgOrderValue / percent(input.conversionRate)
+    calculatedInput.avgOrderValue > 0 && calculatedInput.conversionRate > 0
+      ? offlineBepRevenue / calculatedInput.avgOrderValue / percent(calculatedInput.conversionRate)
       : 0
   const paybackMonths =
-    combinedMonthlyProfit > 0 ? totals.initialCash / combinedMonthlyProfit : null
+    combinedMonthlyProfit > 0 ? totals.nonRecoverableInvestment / combinedMonthlyProfit : null
 
   return {
     offlineContribution,
@@ -72,7 +89,7 @@ export const calculateBep = (input: CalculatorInput): CalculatorResult => {
     offlineBepRevenue,
     offlineBepVisitors,
     riskLevel: riskLevel(combinedMonthlyProfit, paybackMonths),
-    transferRecovery: transferRecovery(input, combinedMonthlyProfit, totals.initialCash),
+    transferRecovery: transferRecovery(calculatedInput, combinedMonthlyProfit, totals.nonRecoverableInvestment),
     totals,
   }
 }
