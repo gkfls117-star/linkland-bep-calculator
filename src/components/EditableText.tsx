@@ -5,6 +5,7 @@ type EditableTextProps = {
   readonly ariaLabel: string
   readonly className?: string
   readonly inputClassName?: string
+  readonly truncate?: boolean
   readonly onChange: (value: string) => void
 }
 
@@ -13,6 +14,7 @@ export const EditableText = ({
   ariaLabel,
   className = "",
   inputClassName = "",
+  truncate = true,
   onChange,
 }: EditableTextProps) => {
   const [editing, setEditing] = useState(false)
@@ -47,7 +49,7 @@ export const EditableText = ({
   return (
     <button
       type="button"
-      className={`truncate text-left text-sm text-[#4f4841] hover:text-[#111827] ${className}`}
+      className={`${truncate ? "truncate" : ""} text-left text-sm text-[#4f4841] hover:text-[#111827] ${className}`}
       onClick={() => {
         setDraft(value)
         setEditing(true)
