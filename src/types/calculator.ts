@@ -18,6 +18,8 @@ export type DynamicItem = {
 }
 
 export type CalculatorInput = {
+  readonly offlineEnabled: boolean
+  readonly onlineEnabled: boolean
   readonly offlineMonthlyRevenue: number
   readonly offlineMarginRate: number
   readonly onlineMonthlyRevenue: number

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import type { CalculatorInput, CalculatorResult, Language, MoneyUnit } from "../types/calculator"
+import { activeOfflineMonthlyRevenue, activeOnlineMonthlyRevenue } from "../lib/calc"
 import { formatMoney, formatMonths, formatNumber, formatPercent } from "../lib/format"
 import { localized, t } from "../lib/i18n"
 import { CardBlock } from "./CardBlock"
@@ -33,12 +34,17 @@ export const Dashboard = ({
   onSaveAs,
   onResetDefault,
   onHighlight,
-}: DashboardProps) => (
+}: DashboardProps) => {
+  const offlineRevenue = activeOfflineMonthlyRevenue(input)
+  const onlineRevenue = activeOnlineMonthlyRevenue(input)
+  const combinedRevenue = offlineRevenue + onlineRevenue
+
+  return (
   <div id="dashboard" className="space-y-5">
-    <div className="grid gap-3 md:grid-cols-2 min-[1350px]:grid-cols-[1fr_1fr_0.75fr_0.75fr_1.6fr]">
+    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 min-[1500px]:grid-cols-[1fr_1fr_1fr_1fr_1.35fr]">
       <MetricCard
         label={localized("합산 월매출", "合计月销售额", language)}
-        value={formatMoney(input.offlineMonthlyRevenue + input.onlineMonthlyRevenue, currency, exchangeRate)}
+        value={formatMoney(combinedRevenue, currency, exchangeRate)}
       />
       <MetricCard
         label={localized("합산 월 영업이익", "合计月营业利润", language)}
@@ -61,19 +67,19 @@ export const Dashboard = ({
     </div>
     <div className="grid gap-5 lg:grid-cols-2 min-[1350px]:grid-cols-[1fr_1fr_260px]">
       <ProfitCard title={t("offline", language)} tone="offline">
-        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(input.offlineMonthlyRevenue, currency, exchangeRate)} />
+        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(offlineRevenue, currency, exchangeRate)} />
         <SummaryLine label={localized("공헌이익", "贡献利润", language)} value={formatMoney(result.offlineContribution, currency, exchangeRate)} />
         <SummaryLine label={localized("고정비", "固定费", language)} value={formatMoney(result.totals.offlineFixedMonthly, currency, exchangeRate)} />
         <SummaryLine label={localized("영업이익", "营业利润", language)} value={formatMoney(result.offlineNetProfit, currency, exchangeRate, true)} />
       </ProfitCard>
       <ProfitCard title={t("online", language)} tone="online">
-        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(input.onlineMonthlyRevenue, currency, exchangeRate)} />
+        <SummaryLine label={localized("월매출", "月销售额", language)} value={formatMoney(onlineRevenue, currency, exchangeRate)} />
         <SummaryLine label={localized("공헌이익", "贡献利润", language)} value={formatMoney(result.onlineContribution, currency, exchangeRate)} />
         <SummaryLine label={localized("온라인 고정비", "线上固定费", language)} value={formatMoney(result.totals.onlineMonthlyCost, currency, exchangeRate)} />
         <SummaryLine label={localized("순수익", "净利润", language)} value={formatMoney(result.onlineNetProfit, currency, exchangeRate, true)} />
       </ProfitCard>
       <CardBlock title={t("combined", language)} className="p-5">
-        <SummaryLine label={localized("합산 매출", "合计销售额", language)} value={formatMoney(input.offlineMonthlyRevenue + input.onlineMonthlyRevenue, currency, exchangeRate)} tip={localized("오프라인 + 온라인 매출", "线下 + 线上销售额", language)} onTip={(active) => onHighlight(active ? "offlineMonthlyRevenue" : null)} />
+        <SummaryLine label={localized("합산 매출", "合计销售额", language)} value={formatMoney(combinedRevenue, currency, exchangeRate)} tip={localized("오프라인 + 온라인 매출", "线下 + 线上销售额", language)} onTip={(active) => onHighlight(active ? "offlineMonthlyRevenue" : null)} />
         <SummaryLine label={localized("합산 영업이익", "合计营业利润", language)} value={formatMoney(result.combinedMonthlyProfit, currency, exchangeRate)} tip={localized("오프라인 이익 + 온라인 이익", "线下利润 + 线上利润", language)} onTip={(active) => onHighlight(active ? "onlineMonthlyRevenue" : null)} />
         <SummaryLine label={t("initialCash", language)} value={formatMoney(result.initialCash, currency, exchangeRate)} tip={localized("초기 투자비 전체 합계", "初始投资总额", language)} onTip={(active) => onHighlight(active ? "transferPremiumYear3" : null)} />
         <SummaryLine label={localized("회수 가능 투자비", "可回收投资", language)} value={formatMoney(result.recoverableInvestment, currency, exchangeRate)} tip={localized("임차/초기 투자비에서 회수 가능 체크된 항목 합계", "租赁/初始投资中勾选可回收的项目合计", language)} onTip={(active) => onHighlight(active ? "transferPremiumYear3" : null)} />
@@ -84,10 +90,10 @@ export const Dashboard = ({
         <div className="mt-4 space-y-2 border-t border-slate-200 pt-3">
           <p className="text-xs font-black text-[#7b746d]">{t("currentSave", language)} · {scenarioName}</p>
           <input className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm" value={saveName} onChange={(event) => onSaveNameChange(event.target.value)} />
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             <button className="rounded-md bg-[#111827] px-3 py-2 text-xs font-black text-white" type="button" onClick={onOverwrite}>{t("overwrite", language)}</button>
             <button className="rounded-md border border-[#111827] px-3 py-2 text-xs font-black text-[#111827]" type="button" onClick={onSaveAs}>{t("saveAs", language)}</button>
-            <button className="rounded-md border border-[#d9cfc1] px-3 py-2 text-xs font-black text-[#5f6f7a]" type="button" onClick={onResetDefault}>{localized("기본값 복원", "恢复默认", language)}</button>
+            <button className="col-span-2 rounded-md border border-[#d9cfc1] px-3 py-2 text-xs font-black text-[#5f6f7a]" type="button" onClick={onResetDefault}>{localized("기본값 복원", "恢复默认", language)}</button>
           </div>
         </div>
       </CardBlock>
@@ -124,6 +130,7 @@ export const Dashboard = ({
       </CardBlock>
   </div>
 )
+}
 
 type MetricCardProps = {
   readonly label: string
@@ -132,9 +139,11 @@ type MetricCardProps = {
 }
 
 const MetricCard = ({ label, value, tone = "default" }: MetricCardProps) => (
-  <div className={`soft-card min-h-[110px] p-4 ${toneClass(tone)}`}>
-    <p className="text-sm font-semibold text-[#7b746d]">{label}</p>
-    <p className="mt-3 text-xl font-black text-[#05070d]">{value}</p>
+  <div className={`metric-card soft-card min-h-[110px] overflow-hidden p-4 ${toneClass(tone)}`}>
+    <p className="text-sm font-semibold leading-snug text-[#7b746d]">{label}</p>
+    <p className="mt-3 max-w-full truncate text-lg font-black leading-tight text-[#05070d] min-[1500px]:text-xl" title={value}>
+      {value}
+    </p>
   </div>
 )
 
@@ -159,12 +168,12 @@ type SummaryLineProps = {
 }
 
 const SummaryLine = ({ label, value, tip, onTip }: SummaryLineProps) => (
-  <div className="flex items-center justify-between gap-3 border-b border-[#e6e0d8] pb-3 last:border-b-0">
-    <p className="flex items-center gap-1 text-sm text-[#4f4841]">
+  <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-[#e6e0d8] pb-3 last:border-b-0">
+    <p className="flex min-w-0 items-center gap-1 text-sm leading-snug text-[#4f4841]">
       {label}
       {tip !== undefined && onTip !== undefined && <InfoTip text={tip} onToggle={onTip} />}
     </p>
-    <p className="text-right text-sm font-black text-[#05070d]">{value}</p>
+    <p className="max-w-[140px] truncate text-right text-sm font-black text-[#05070d]" title={value}>{value}</p>
   </div>
 )
 

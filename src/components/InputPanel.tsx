@@ -16,15 +16,23 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
     onChange(withCalculatedOfflineRevenue({ ...input, [key]: value }))
   }
 
+  const setToggle = (key: "offlineEnabled" | "onlineEnabled", value: boolean): void => {
+    onChange(withCalculatedOfflineRevenue({ ...input, [key]: value }))
+  }
+
   return (
     <aside className="soft-card min-w-0 space-y-4 p-5 lg:sticky lg:top-5">
       <div className="flex gap-3">
-        <button type="button" className="rounded-md bg-[#111827] px-5 py-2 text-sm font-black text-white">
-          {localized("오프라인 ON", "线下 ON", language)}
-        </button>
-        <button type="button" className="rounded-md bg-[#111827] px-5 py-2 text-sm font-black text-white">
-          {localized("온라인 ON", "线上 ON", language)}
-        </button>
+        <ChannelToggle
+          active={input.offlineEnabled}
+          label={localized("오프라인", "线下", language)}
+          onClick={() => setToggle("offlineEnabled", !input.offlineEnabled)}
+        />
+        <ChannelToggle
+          active={input.onlineEnabled}
+          label={localized("온라인", "线上", language)}
+          onClick={() => setToggle("onlineEnabled", !input.onlineEnabled)}
+        />
       </div>
       {(["offline", "cost", "online", "transfer"] as const).map((group) => (
         <div key={group} className="grid gap-2">
@@ -32,7 +40,7 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
           {numberFields(language)
             .filter((field) => field.group === group)
             .map((field) => (
-              <label key={field.key} className={rowClass(highlightedKey === field.key)}>
+              <label key={field.key} className={rowClass(highlightedKey === field.key, groupIsActive(input, field.group))}>
                 <span>{field.label}</span>
                 <FormattedNumberInput
                   className="w-36"
@@ -85,6 +93,27 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
   )
 }
 
+type ChannelToggleProps = {
+  readonly active: boolean
+  readonly label: string
+  readonly onClick: () => void
+}
+
+const ChannelToggle = ({ active, label, onClick }: ChannelToggleProps) => (
+  <button
+    type="button"
+    aria-pressed={active}
+    className={`rounded-md px-5 py-2 text-sm font-black transition-colors ${
+      active
+        ? "bg-[#111827] text-white shadow-sm"
+        : "border border-[#d9cfc1] bg-white text-[#7b746d] hover:border-[#111827]"
+    }`}
+    onClick={onClick}
+  >
+    {label} {active ? "ON" : "OFF"}
+  </button>
+)
+
 type NumberField = {
   readonly key: keyof Pick<
     CalculatorInput,
@@ -120,9 +149,11 @@ const numberFields = (language: Language): readonly NumberField[] => [
   { key: "transferPremiumYear5", label: localized("5년차 권리금", "第5年转让费", language), unit: localized("원", "韩元", language), group: "transfer" },
 ]
 
-const rowClass = (active: boolean): string =>
-  `grid grid-cols-[minmax(0,1fr)_minmax(0,144px)_auto] items-center gap-2 text-sm text-[#4f4841] ${
-    active ? "row-focus rounded-md" : ""
+const rowClass = (highlighted: boolean, enabled: boolean): string =>
+  `grid grid-cols-[minmax(0,1fr)_minmax(0,144px)_auto] items-center gap-2 text-sm text-[#4f4841] transition-opacity ${
+    highlighted ? "row-focus rounded-md" : ""
+  } ${
+    enabled ? "" : "opacity-45"
   }`
 
 const numberBounds = (field: NumberField): { readonly min: number; readonly max?: number } =>
@@ -131,6 +162,18 @@ const numberBounds = (field: NumberField): { readonly min: number; readonly max?
 const sectionClass = (group: NumberField["group"]): string => {
   const color = group === "online" ? "bg-[#edf7ff] text-[#0369a1]" : "bg-[#fbf5df] text-[#b45309]"
   return `rounded-xl px-3 py-2 text-sm font-black ${color}`
+}
+
+const groupIsActive = (input: CalculatorInput, group: NumberField["group"]): boolean => {
+  switch (group) {
+    case "offline":
+    case "cost":
+      return input.offlineEnabled
+    case "online":
+      return input.onlineEnabled
+    case "transfer":
+      return true
+  }
 }
 
 const sectionTitle = (group: NumberField["group"], language: Language): string => {

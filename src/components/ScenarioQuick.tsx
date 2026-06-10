@@ -1,11 +1,17 @@
-import type { CalculatorResult, Language, MoneyUnit } from "../types/calculator"
+import type { CalculatorInput, CalculatorResult, Language, MoneyUnit } from "../types/calculator"
 import type { Scenario } from "../types/scenario"
-import { calculateBep, withCalculatedOfflineRevenue } from "../lib/calc"
+import {
+  activeOfflineMonthlyRevenue,
+  activeOnlineMonthlyRevenue,
+  calculateBep,
+  withCalculatedOfflineRevenue,
+} from "../lib/calc"
 import { formatMoney, formatMonths } from "../lib/format"
 import { localized, t } from "../lib/i18n"
 import { CardBlock } from "./CardBlock"
 
 type ScenarioQuickProps = {
+  readonly currentInput: CalculatorInput
   readonly scenarios: readonly Scenario[]
   readonly activeId: string
   readonly language: Language
@@ -15,6 +21,7 @@ type ScenarioQuickProps = {
 }
 
 export const ScenarioQuick = ({
+  currentInput,
   scenarios,
   activeId,
   language,
@@ -22,7 +29,7 @@ export const ScenarioQuick = ({
   exchangeRate,
   onSelect,
 }: ScenarioQuickProps) => {
-  const activeScenario = scenarios.find((scenario) => scenario.id === activeId) ?? scenarios[0]
+  const currentResult = calculateBep(withCalculatedOfflineRevenue(currentInput))
 
   return (
     <CardBlock title={t("scenarioQuick", language)} className="p-5">
@@ -31,9 +38,7 @@ export const ScenarioQuick = ({
     </p>
     <div className="mb-3 rounded-2xl bg-[#f4f2ee] px-4 py-3 text-sm font-bold text-[#4f4841]">
       {localized("현재 합산이익", "当前合计利润", language)}{" "}
-      {activeScenario !== undefined
-        ? formatMoney(calculateBep(withCalculatedOfflineRevenue(activeScenario.data)).combinedMonthlyProfit, currency, exchangeRate, true)
-        : "-"}
+      {formatMoney(currentResult.combinedMonthlyProfit, currency, exchangeRate, true)}
     </div>
     <div className="overflow-x-auto">
       <table className="w-full min-w-[640px] text-sm">
@@ -50,10 +55,11 @@ export const ScenarioQuick = ({
       {scenarios.slice(0, 4).map((scenario) => {
         const scenarioInput = withCalculatedOfflineRevenue(scenario.data)
         const result = calculateBep(scenarioInput)
+        const combinedRevenue = activeOfflineMonthlyRevenue(scenarioInput) + activeOnlineMonthlyRevenue(scenarioInput)
         return (
           <tr key={scenario.id} className={`border-b border-slate-200 ${scenario.id === activeId ? "bg-[#fffbed]" : ""}`}>
             <td className="px-3 py-3 font-bold text-[#111827]">{scenario.name}</td>
-            <td className="px-3 py-3 text-right">{formatMoney(scenarioInput.offlineMonthlyRevenue + scenarioInput.onlineMonthlyRevenue, currency, exchangeRate, true)}</td>
+            <td className="px-3 py-3 text-right">{formatMoney(combinedRevenue, currency, exchangeRate, true)}</td>
             <td className="px-3 py-3 text-right">{formatMoney(result.combinedMonthlyProfit, currency, exchangeRate, true)}</td>
             <td className="px-3 py-3 text-right">{formatMonths(result.paybackMonths, language)}</td>
             <td className="px-3 py-3 text-center">

@@ -22,6 +22,12 @@ export const withCalculatedOfflineRevenue = (input: CalculatorInput): Calculator
   offlineMonthlyRevenue: calculateOfflineMonthlyRevenue(input),
 })
 
+export const activeOfflineMonthlyRevenue = (input: CalculatorInput): number =>
+  input.offlineEnabled ? input.offlineMonthlyRevenue : 0
+
+export const activeOnlineMonthlyRevenue = (input: CalculatorInput): number =>
+  input.onlineEnabled ? input.onlineMonthlyRevenue : 0
+
 const effectiveItemType = (item: DynamicItem, section: ExpenseSection): DynamicItem["type"] => {
   if (section === "onlineCosts" && lockedOnlineRateItemIds.has(item.id)) return "rate"
   return item.type
@@ -33,9 +39,9 @@ const itemCost = (
   input: CalculatorInput,
 ): number => {
   if (effectiveItemType(item, section) === "amount") return item.value
-  if (section === "onlineCosts") return input.onlineMonthlyRevenue * percent(item.value)
-  if (section === "offlineFixed") return input.offlineMonthlyRevenue * percent(item.value)
-  return input.offlineMonthlyRevenue * percent(item.value)
+  if (section === "onlineCosts") return activeOnlineMonthlyRevenue(input) * percent(item.value)
+  if (section === "offlineFixed") return activeOfflineMonthlyRevenue(input) * percent(item.value)
+  return activeOfflineMonthlyRevenue(input) * percent(item.value)
 }
 
 export const sumSection = (
@@ -53,8 +59,12 @@ export const calculateTotals = (input: CalculatorInput): SectionTotals => {
   )
 
   return {
-    offlineFixedMonthly: sumSection(calculatedInput.offlineFixed, "offlineFixed", calculatedInput),
-    onlineMonthlyCost: sumSection(calculatedInput.onlineCosts, "onlineCosts", calculatedInput),
+    offlineFixedMonthly: calculatedInput.offlineEnabled
+      ? sumSection(calculatedInput.offlineFixed, "offlineFixed", calculatedInput)
+      : 0,
+    onlineMonthlyCost: calculatedInput.onlineEnabled
+      ? sumSection(calculatedInput.onlineCosts, "onlineCosts", calculatedInput)
+      : 0,
     initialCash,
     recoverableInvestment,
     nonRecoverableInvestment: initialCash - recoverableInvestment,
@@ -64,8 +74,10 @@ export const calculateTotals = (input: CalculatorInput): SectionTotals => {
 export const calculateBep = (input: CalculatorInput): CalculatorResult => {
   const calculatedInput = withCalculatedOfflineRevenue(input)
   const totals = calculateTotals(calculatedInput)
-  const offlineContribution = calculatedInput.offlineMonthlyRevenue * remainingPercent(calculatedInput.offlineMarginRate)
-  const onlineContribution = calculatedInput.onlineMonthlyRevenue * remainingPercent(calculatedInput.onlineMarginRate)
+  const offlineRevenue = activeOfflineMonthlyRevenue(calculatedInput)
+  const onlineRevenue = activeOnlineMonthlyRevenue(calculatedInput)
+  const offlineContribution = offlineRevenue * remainingPercent(calculatedInput.offlineMarginRate)
+  const onlineContribution = onlineRevenue * remainingPercent(calculatedInput.onlineMarginRate)
   const offlineNetProfit = offlineContribution - totals.offlineFixedMonthly
   const onlineNetProfit = onlineContribution - totals.onlineMonthlyCost
   const combinedMonthlyProfit = offlineNetProfit + onlineNetProfit

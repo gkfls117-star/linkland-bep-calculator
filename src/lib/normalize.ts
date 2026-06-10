@@ -17,6 +17,8 @@ const itemSchema = z.object({
 })
 
 const inputSchema = z.object({
+  offlineEnabled: z.boolean().default(true),
+  onlineEnabled: z.boolean().default(true),
   offlineMonthlyRevenue: z.number().finite(),
   offlineMarginRate: z.number().finite(),
   onlineMonthlyRevenue: z.number().finite(),

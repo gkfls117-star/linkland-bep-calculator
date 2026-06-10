@@ -33,6 +33,8 @@ export const createItem = (
 })
 
 export const defaultInput: CalculatorInput = {
+  offlineEnabled: true,
+  onlineEnabled: true,
   offlineMonthlyRevenue: 60000000,
   offlineMarginRate: 62,
   onlineMonthlyRevenue: 22000000,

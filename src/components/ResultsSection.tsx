@@ -65,6 +65,7 @@ export const ResultsSection = ({
       onHighlight={onHighlight}
     />
     <ScenarioQuick
+      currentInput={input}
       scenarios={scenarios}
       activeId={activeScenarioId}
       language={language}

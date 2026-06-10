@@ -54,6 +54,27 @@ describe("calculateBep", () => {
     expect(result.totals.onlineMonthlyCost).toBe(15300000)
   })
 
+  it("Given a disabled sales channel When calculating BEP Then the channel revenue and operating costs are excluded", () => {
+    const offlineDisabled = calculateBep({
+      ...defaultInput,
+      offlineEnabled: false,
+    })
+    const onlineDisabled = calculateBep({
+      ...defaultInput,
+      onlineEnabled: false,
+    })
+
+    expect(offlineDisabled.offlineContribution).toBe(0)
+    expect(offlineDisabled.offlineNetProfit).toBe(0)
+    expect(offlineDisabled.combinedMonthlyProfit).toBe(offlineDisabled.onlineNetProfit)
+    expect(offlineDisabled.totals.offlineFixedMonthly).toBe(0)
+
+    expect(onlineDisabled.onlineContribution).toBe(0)
+    expect(onlineDisabled.onlineNetProfit).toBe(0)
+    expect(onlineDisabled.combinedMonthlyProfit).toBe(onlineDisabled.offlineNetProfit)
+    expect(onlineDisabled.totals.onlineMonthlyCost).toBe(0)
+  })
+
   it("DEFECT-001 Given recoverable investment When calculating payback Then monthly recovery uses net invested cash", () => {
     const recoverableItem = defaultInput.investment.find((item) => item.id === "invest_deposit")
     const nonRecoverableItem = defaultInput.investment.find((item) => item.id === "invest_fitout")
