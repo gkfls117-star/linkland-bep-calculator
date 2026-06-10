@@ -1,0 +1,26 @@
+{
+  "before": {
+    "y": 0,
+    "hash": "",
+    "hasMarket": false,
+    "hasScenarios": false,
+    "marketTop": 4720.5,
+    "scenarioTableTop": 8884.5
+  },
+  "afterMarket": {
+    "y": 0,
+    "hash": "#market",
+    "hasMarket": false,
+    "hasScenarios": false,
+    "marketTop": 4720.5,
+    "scenarioTableTop": 8884.5
+  },
+  "afterScenarios": {
+    "y": 0,
+    "hash": "#scenarios",
+    "hasMarket": false,
+    "hasScenarios": false,
+    "marketTop": 4720.5,
+    "scenarioTableTop": 8884.5
+  }
+}

@@ -41,11 +41,9 @@ export const useSheetsReload = ({
         listScenarios(sheetsConfig),
         listMarketStores(sheetsConfig),
       ])
-      if (sheetScenarios.length > 0) applyScenarios(sheetScenarios)
-      if (sheetStores.length > 0) {
-        setStores(sheetStores)
-        saveMarketStores(sheetStores)
-      }
+      applyScenarios(sheetScenarios)
+      setStores(sheetStores)
+      saveMarketStores(sheetStores)
       setSyncState({ kind: "sheets", message: localized("Sheets 동기화 완료", "Sheets 同步完成", language) })
     } catch (error: unknown) {
       setSyncState({

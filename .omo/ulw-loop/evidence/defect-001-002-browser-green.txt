@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1A[2K[1/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:12:1 › DEFECT-001 @defect-001 Given recoverable investment When profit is positive Then dashboard payback uses net invested cash
+[1A[2K[2/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:27:1 › DEFECT-002 @defect-002 Given invalid negative and over-limit values When typing Then inputs clamp before calculation
+[1A[2K  2 passed (4.8s)

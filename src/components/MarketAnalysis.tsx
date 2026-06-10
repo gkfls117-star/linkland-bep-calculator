@@ -163,12 +163,22 @@ const MarketRow = ({
 type NumberInputProps = {
   readonly label: string
   readonly value: number
+  readonly isRate?: boolean
   readonly onChange: (value: number) => void
 }
 
-const NumberInput = ({ label, value, onChange }: NumberInputProps) => (
+const NumberInput = ({ label, value, isRate = label.includes("%"), onChange }: NumberInputProps) => (
   <label className="grid gap-1 text-xs text-steel">
     {label}
-    <FormattedNumberInput className="w-full" decimals={label.includes("%") ? 2 : 0} value={value} onChange={onChange} />
+    <FormattedNumberInput
+      className="w-full"
+      decimals={isRate ? 2 : 0}
+      {...marketNumberBounds(isRate)}
+      value={value}
+      onChange={onChange}
+    />
   </label>
 )
+
+const marketNumberBounds = (isRate: boolean): { readonly min: number; readonly max?: number } =>
+  isRate ? { min: 0, max: 100 } : { min: 0 }

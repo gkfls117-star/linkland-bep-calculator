@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:172:1 › Given a real investor walkthrough When editing assumptions and reviewing outputs Then core flows stay coherent @final-full-walkthrough
+[1A[2K  1 passed (5.7s)

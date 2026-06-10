@@ -1,0 +1,952 @@
+[
+  {
+    "name": "default",
+    "path": ".omo/ulw-loop/evidence/task-5-default.png",
+    "values": [
+      {
+        "i": 3,
+        "value": "150,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 방문객 명"
+      },
+      {
+        "i": 4,
+        "value": "0.8",
+        "checked": false,
+        "readOnly": false,
+        "text": "구매 전환율 %"
+      },
+      {
+        "i": 5,
+        "value": "50,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "객단가 원"
+      },
+      {
+        "i": 6,
+        "value": "60,000,000",
+        "checked": false,
+        "readOnly": true,
+        "text": "오프라인 월매출 원"
+      },
+      {
+        "i": 7,
+        "value": "62",
+        "checked": false,
+        "readOnly": false,
+        "text": "자체 제조 제품 원가율 %"
+      },
+      {
+        "i": 8,
+        "value": "22,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 월매출 원"
+      },
+      {
+        "i": 9,
+        "value": "55",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 제품 원가율 %"
+      },
+      {
+        "i": 10,
+        "value": "250,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "2년차 권리금 원"
+      },
+      {
+        "i": 11,
+        "value": "320,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "3년차 권리금 원"
+      },
+      {
+        "i": 12,
+        "value": "380,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "4년차 권리금 원"
+      },
+      {
+        "i": 13,
+        "value": "450,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "5년차 권리금 원"
+      },
+      {
+        "i": 14,
+        "value": "30,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 임대료 원"
+      },
+      {
+        "i": 15,
+        "value": "12,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인건비 원"
+      },
+      {
+        "i": 16,
+        "value": "4,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "관리비/공과금 원"
+      },
+      {
+        "i": 17,
+        "value": "2,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "현장 마케팅 원"
+      },
+      {
+        "i": 18,
+        "value": "5.5",
+        "checked": false,
+        "readOnly": false,
+        "text": "플랫폼/PG 수수료 %"
+      },
+      {
+        "i": 19,
+        "value": "8",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 광고비 %"
+      },
+      {
+        "i": 20,
+        "value": "1,800,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "배송/CS 운영비 원"
+      },
+      {
+        "i": 21,
+        "value": "300,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "임대 보증금 원"
+      },
+      {
+        "i": 22,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 23,
+        "value": "200,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "권리금 원"
+      },
+      {
+        "i": 24,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 25,
+        "value": "180,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인테리어/설비 원"
+      },
+      {
+        "i": 26,
+        "value": "on",
+        "checked": false,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 27,
+        "value": "80,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "초도 재고/운영자금 원"
+      },
+      {
+        "i": 28,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      }
+    ],
+    "dashboard": "합산 월매출\n\n₩82,000,000\n\n합산 월 영업이익\n\n-₩21,070,000\n\n오프라인 이익\n\n-₩2620만\n\n온라인 이익\n\n₩513만\n\n투자비 / 회수\n\n₩8억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩60,000,000\n\n공헌이익\n\n₩22,800,000\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩2620만\n\n온라인 손익\n\n월매출\n\n₩22,000,000\n\n공헌이익\n\n₩9,900,000\n\n온라인 고정비\n\n₩4,770,000\n\n순수익\n\n₩513만\n\n합산/투자\n\n합산 매출\n\n₩82,000,000\n\n합산 영업이익\n\n-₩21,070,000\n\n초기 필요 현금\n\n₩760,000,000\n\n회수 가능 투자비\n\n₩580,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩505,680,000\t₩324,320,000\t-57.3%\n3년차\t₩320,000,000\t-₩758,520,000\t₩141,480,000\t-81.4%\n4년차\t₩380,000,000\t-₩1,011,360,000\t-₩51,360,000\t-106.8%\n5년차\t₩450,000,000\t-₩1,264,200,000\t-₩234,200,000\t-130.8%",
+    "errors": []
+  },
+  {
+    "name": "positive-sanity",
+    "path": ".omo/ulw-loop/evidence/task-5-positive-sanity.png",
+    "values": [
+      {
+        "i": 3,
+        "value": "1,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 방문객 명"
+      },
+      {
+        "i": 4,
+        "value": "10",
+        "checked": false,
+        "readOnly": false,
+        "text": "구매 전환율 %"
+      },
+      {
+        "i": 5,
+        "value": "20,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "객단가 원"
+      },
+      {
+        "i": 6,
+        "value": "2,000,000",
+        "checked": false,
+        "readOnly": true,
+        "text": "오프라인 월매출 원"
+      },
+      {
+        "i": 7,
+        "value": "62",
+        "checked": false,
+        "readOnly": false,
+        "text": "자체 제조 제품 원가율 %"
+      },
+      {
+        "i": 8,
+        "value": "22,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 월매출 원"
+      },
+      {
+        "i": 9,
+        "value": "55",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 제품 원가율 %"
+      },
+      {
+        "i": 10,
+        "value": "250,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "2년차 권리금 원"
+      },
+      {
+        "i": 11,
+        "value": "320,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "3년차 권리금 원"
+      },
+      {
+        "i": 12,
+        "value": "380,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "4년차 권리금 원"
+      },
+      {
+        "i": 13,
+        "value": "450,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "5년차 권리금 원"
+      },
+      {
+        "i": 14,
+        "value": "30,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 임대료 원"
+      },
+      {
+        "i": 15,
+        "value": "12,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인건비 원"
+      },
+      {
+        "i": 16,
+        "value": "4,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "관리비/공과금 원"
+      },
+      {
+        "i": 17,
+        "value": "2,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "현장 마케팅 원"
+      },
+      {
+        "i": 18,
+        "value": "5.5",
+        "checked": false,
+        "readOnly": false,
+        "text": "플랫폼/PG 수수료 %"
+      },
+      {
+        "i": 19,
+        "value": "8",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 광고비 %"
+      },
+      {
+        "i": 20,
+        "value": "1,800,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "배송/CS 운영비 원"
+      },
+      {
+        "i": 21,
+        "value": "300,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "임대 보증금 원"
+      },
+      {
+        "i": 22,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 23,
+        "value": "200,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "권리금 원"
+      },
+      {
+        "i": 24,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 25,
+        "value": "180,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인테리어/설비 원"
+      },
+      {
+        "i": 26,
+        "value": "on",
+        "checked": false,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 27,
+        "value": "80,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "초도 재고/운영자금 원"
+      },
+      {
+        "i": 28,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      }
+    ],
+    "dashboard": "합산 월매출\n\n₩24,000,000\n\n합산 월 영업이익\n\n-₩43,110,000\n\n오프라인 이익\n\n-₩4824만\n\n온라인 이익\n\n₩513만\n\n투자비 / 회수\n\n₩8억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩2,000,000\n\n공헌이익\n\n₩760,000\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩4824만\n\n온라인 손익\n\n월매출\n\n₩22,000,000\n\n공헌이익\n\n₩9,900,000\n\n온라인 고정비\n\n₩4,770,000\n\n순수익\n\n₩513만\n\n합산/투자\n\n합산 매출\n\n₩24,000,000\n\n합산 영업이익\n\n-₩43,110,000\n\n초기 필요 현금\n\n₩760,000,000\n\n회수 가능 투자비\n\n₩580,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩1,034,640,000\t-₩204,640,000\t-126.9%\n3년차\t₩320,000,000\t-₩1,551,960,000\t-₩651,960,000\t-185.8%\n4년차\t₩380,000,000\t-₩2,069,280,000\t-₩1,109,280,000\t-246%\n5년차\t₩450,000,000\t-₩2,586,600,000\t-₩1,556,600,000\t-304.8%",
+    "errors": []
+  },
+  {
+    "name": "blank-core-inputs",
+    "path": ".omo/ulw-loop/evidence/task-5-blank-core-inputs.png",
+    "values": [
+      {
+        "i": 3,
+        "value": "0",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 방문객 명"
+      },
+      {
+        "i": 4,
+        "value": "0",
+        "checked": false,
+        "readOnly": false,
+        "text": "구매 전환율 %"
+      },
+      {
+        "i": 5,
+        "value": "0",
+        "checked": false,
+        "readOnly": false,
+        "text": "객단가 원"
+      },
+      {
+        "i": 6,
+        "value": "0",
+        "checked": false,
+        "readOnly": true,
+        "text": "오프라인 월매출 원"
+      },
+      {
+        "i": 7,
+        "value": "62",
+        "checked": false,
+        "readOnly": false,
+        "text": "자체 제조 제품 원가율 %"
+      },
+      {
+        "i": 8,
+        "value": "22,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 월매출 원"
+      },
+      {
+        "i": 9,
+        "value": "55",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 제품 원가율 %"
+      },
+      {
+        "i": 10,
+        "value": "250,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "2년차 권리금 원"
+      },
+      {
+        "i": 11,
+        "value": "320,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "3년차 권리금 원"
+      },
+      {
+        "i": 12,
+        "value": "380,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "4년차 권리금 원"
+      },
+      {
+        "i": 13,
+        "value": "450,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "5년차 권리금 원"
+      },
+      {
+        "i": 14,
+        "value": "30,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 임대료 원"
+      },
+      {
+        "i": 15,
+        "value": "12,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인건비 원"
+      },
+      {
+        "i": 16,
+        "value": "4,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "관리비/공과금 원"
+      },
+      {
+        "i": 17,
+        "value": "2,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "현장 마케팅 원"
+      },
+      {
+        "i": 18,
+        "value": "5.5",
+        "checked": false,
+        "readOnly": false,
+        "text": "플랫폼/PG 수수료 %"
+      },
+      {
+        "i": 19,
+        "value": "8",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 광고비 %"
+      },
+      {
+        "i": 20,
+        "value": "1,800,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "배송/CS 운영비 원"
+      },
+      {
+        "i": 21,
+        "value": "300,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "임대 보증금 원"
+      },
+      {
+        "i": 22,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 23,
+        "value": "200,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "권리금 원"
+      },
+      {
+        "i": 24,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 25,
+        "value": "180,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인테리어/설비 원"
+      },
+      {
+        "i": 26,
+        "value": "on",
+        "checked": false,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 27,
+        "value": "80,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "초도 재고/운영자금 원"
+      },
+      {
+        "i": 28,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      }
+    ],
+    "dashboard": "합산 월매출\n\n₩22,000,000\n\n합산 월 영업이익\n\n-₩43,870,000\n\n오프라인 이익\n\n-₩4900만\n\n온라인 이익\n\n₩513만\n\n투자비 / 회수\n\n₩8억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩0\n\n공헌이익\n\n₩0\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩4900만\n\n온라인 손익\n\n월매출\n\n₩22,000,000\n\n공헌이익\n\n₩9,900,000\n\n온라인 고정비\n\n₩4,770,000\n\n순수익\n\n₩513만\n\n합산/투자\n\n합산 매출\n\n₩22,000,000\n\n합산 영업이익\n\n-₩43,870,000\n\n초기 필요 현금\n\n₩760,000,000\n\n회수 가능 투자비\n\n₩580,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩1,052,880,000\t-₩222,880,000\t-129.3%\n3년차\t₩320,000,000\t-₩1,579,320,000\t-₩679,320,000\t-189.4%\n4년차\t₩380,000,000\t-₩2,105,760,000\t-₩1,145,760,000\t-250.8%\n5년차\t₩450,000,000\t-₩2,632,200,000\t-₩1,602,200,000\t-310.8%",
+    "errors": []
+  },
+  {
+    "name": "negative-core-inputs",
+    "path": ".omo/ulw-loop/evidence/task-5-negative-core-inputs.png",
+    "values": [
+      {
+        "i": 3,
+        "value": "-1,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 방문객 명"
+      },
+      {
+        "i": 4,
+        "value": "-5",
+        "checked": false,
+        "readOnly": false,
+        "text": "구매 전환율 %"
+      },
+      {
+        "i": 5,
+        "value": "-20,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "객단가 원"
+      },
+      {
+        "i": 6,
+        "value": "-1,000,000",
+        "checked": false,
+        "readOnly": true,
+        "text": "오프라인 월매출 원"
+      },
+      {
+        "i": 7,
+        "value": "-10",
+        "checked": false,
+        "readOnly": false,
+        "text": "자체 제조 제품 원가율 %"
+      },
+      {
+        "i": 8,
+        "value": "-5,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 월매출 원"
+      },
+      {
+        "i": 9,
+        "value": "-20",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 제품 원가율 %"
+      },
+      {
+        "i": 10,
+        "value": "250,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "2년차 권리금 원"
+      },
+      {
+        "i": 11,
+        "value": "320,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "3년차 권리금 원"
+      },
+      {
+        "i": 12,
+        "value": "380,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "4년차 권리금 원"
+      },
+      {
+        "i": 13,
+        "value": "450,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "5년차 권리금 원"
+      },
+      {
+        "i": 14,
+        "value": "30,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 임대료 원"
+      },
+      {
+        "i": 15,
+        "value": "12,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인건비 원"
+      },
+      {
+        "i": 16,
+        "value": "4,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "관리비/공과금 원"
+      },
+      {
+        "i": 17,
+        "value": "2,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "현장 마케팅 원"
+      },
+      {
+        "i": 18,
+        "value": "5.5",
+        "checked": false,
+        "readOnly": false,
+        "text": "플랫폼/PG 수수료 %"
+      },
+      {
+        "i": 19,
+        "value": "8",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 광고비 %"
+      },
+      {
+        "i": 20,
+        "value": "1,800,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "배송/CS 운영비 원"
+      },
+      {
+        "i": 21,
+        "value": "-300,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "임대 보증금 원"
+      },
+      {
+        "i": 22,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 23,
+        "value": "200,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "권리금 원"
+      },
+      {
+        "i": 24,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 25,
+        "value": "180,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인테리어/설비 원"
+      },
+      {
+        "i": 26,
+        "value": "on",
+        "checked": false,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 27,
+        "value": "80,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "초도 재고/운영자금 원"
+      },
+      {
+        "i": 28,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      }
+    ],
+    "dashboard": "합산 월매출\n\n-₩6,000,000\n\n합산 월 영업이익\n\n-₩57,225,000\n\n오프라인 이익\n\n-₩5010만\n\n온라인 이익\n\n-₩713만\n\n투자비 / 회수\n\n₩2억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n-₩1,000,000\n\n공헌이익\n\n-₩1,100,000\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩5010만\n\n온라인 손익\n\n월매출\n\n-₩5,000,000\n\n공헌이익\n\n-₩6,000,000\n\n온라인 고정비\n\n₩1,125,000\n\n순수익\n\n-₩713만\n\n합산/투자\n\n합산 매출\n\n-₩6,000,000\n\n합산 영업이익\n\n-₩57,225,000\n\n초기 필요 현금\n\n₩160,000,000\n\n회수 가능 투자비\n\n-₩20,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩1,373,400,000\t-₩1,143,400,000\t-814.6%\n3년차\t₩320,000,000\t-₩2,060,100,000\t-₩1,760,100,000\t-1,200.1%\n4년차\t₩380,000,000\t-₩2,746,800,000\t-₩2,386,800,000\t-1,591.8%\n5년차\t₩450,000,000\t-₩3,433,500,000\t-₩3,003,500,000\t-1,977.2%",
+    "errors": []
+  },
+  {
+    "name": "over-limit-core-inputs",
+    "path": ".omo/ulw-loop/evidence/task-5-over-limit-core-inputs.png",
+    "values": [
+      {
+        "i": 3,
+        "value": "1,000,000,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 방문객 명"
+      },
+      {
+        "i": 4,
+        "value": "150",
+        "checked": false,
+        "readOnly": false,
+        "text": "구매 전환율 %"
+      },
+      {
+        "i": 5,
+        "value": "999,999,999,999",
+        "checked": false,
+        "readOnly": false,
+        "text": "객단가 원"
+      },
+      {
+        "i": 6,
+        "value": "1,499,999,999,998,500,000,000,000",
+        "checked": false,
+        "readOnly": true,
+        "text": "오프라인 월매출 원"
+      },
+      {
+        "i": 7,
+        "value": "150",
+        "checked": false,
+        "readOnly": false,
+        "text": "자체 제조 제품 원가율 %"
+      },
+      {
+        "i": 8,
+        "value": "1,000,000,000,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 월매출 원"
+      },
+      {
+        "i": 9,
+        "value": "200",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 제품 원가율 %"
+      },
+      {
+        "i": 10,
+        "value": "250,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "2년차 권리금 원"
+      },
+      {
+        "i": 11,
+        "value": "320,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "3년차 권리금 원"
+      },
+      {
+        "i": 12,
+        "value": "380,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "4년차 권리금 원"
+      },
+      {
+        "i": 13,
+        "value": "450,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "5년차 권리금 원"
+      },
+      {
+        "i": 14,
+        "value": "30,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "월 임대료 원"
+      },
+      {
+        "i": 15,
+        "value": "12,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인건비 원"
+      },
+      {
+        "i": 16,
+        "value": "4,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "관리비/공과금 원"
+      },
+      {
+        "i": 17,
+        "value": "2,500,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "현장 마케팅 원"
+      },
+      {
+        "i": 18,
+        "value": "5.5",
+        "checked": false,
+        "readOnly": false,
+        "text": "플랫폼/PG 수수료 %"
+      },
+      {
+        "i": 19,
+        "value": "8",
+        "checked": false,
+        "readOnly": false,
+        "text": "온라인 광고비 %"
+      },
+      {
+        "i": 20,
+        "value": "1,800,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "배송/CS 운영비 원"
+      },
+      {
+        "i": 21,
+        "value": "-300,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "임대 보증금 원"
+      },
+      {
+        "i": 22,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 23,
+        "value": "200,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "권리금 원"
+      },
+      {
+        "i": 24,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 25,
+        "value": "180,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "인테리어/설비 원"
+      },
+      {
+        "i": 26,
+        "value": "on",
+        "checked": false,
+        "readOnly": false,
+        "text": "회수 가능"
+      },
+      {
+        "i": 27,
+        "value": "80,000,000",
+        "checked": false,
+        "readOnly": false,
+        "text": "초도 재고/운영자금 원"
+      },
+      {
+        "i": 28,
+        "value": "on",
+        "checked": true,
+        "readOnly": false,
+        "text": "회수 가능"
+      }
+    ],
+    "dashboard": "합산 월매출\n\n₩1,500,000,000,998,500,000,000,000\n\n합산 월 영업이익\n\n-₩750,000,001,134,250,000,000,000\n\n오프라인 이익\n\n-₩749,999,999,999조\n\n온라인 이익\n\n-₩1135조\n\n투자비 / 회수\n\n₩2억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩1,499,999,999,998,500,000,000,000\n\n공헌이익\n\n-₩749,999,999,999,250,000,000,000\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩749,999,999,999조\n\n온라인 손익\n\n월매출\n\n₩1,000,000,000,000,000\n\n공헌이익\n\n-₩1,000,000,000,000,000\n\n온라인 고정비\n\n₩135,000,001,800,000\n\n순수익\n\n-₩1135조\n\n합산/투자\n\n합산 매출\n\n₩1,500,000,000,998,500,000,000,000\n\n합산 영업이익\n\n-₩750,000,001,134,250,000,000,000\n\n초기 필요 현금\n\n₩160,000,000\n\n회수 가능 투자비\n\n-₩20,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩18,000,000,027,222,000,000,000,000\t-₩18,000,000,027,222,000,000,000,000\t-11,250,000,017,013,750,000%\n3년차\t₩320,000,000\t-₩27,000,000,040,833,000,000,000,000\t-₩27,000,000,040,833,000,000,000,000\t-16,875,000,025,520,628,000%\n4년차\t₩380,000,000\t-₩36,000,000,054,444,000,000,000,000\t-₩36,000,000,054,444,000,000,000,000\t-22,500,000,034,027,500,000%\n5년차\t₩450,000,000\t-₩45,000,000,068,055,000,000,000,000\t-₩45,000,000,068,055,000,000,000,000\t-28,125,000,042,534,375,000%",
+    "errors": []
+  }
+]

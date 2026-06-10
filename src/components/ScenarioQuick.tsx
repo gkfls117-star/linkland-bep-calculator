@@ -21,15 +21,18 @@ export const ScenarioQuick = ({
   currency,
   exchangeRate,
   onSelect,
-}: ScenarioQuickProps) => (
-  <CardBlock title={t("scenarioQuick", language)} className="p-5">
+}: ScenarioQuickProps) => {
+  const activeScenario = scenarios.find((scenario) => scenario.id === activeId) ?? scenarios[0]
+
+  return (
+    <CardBlock title={t("scenarioQuick", language)} className="p-5">
     <p className="mb-3 text-sm text-[#6b625c]">
       {localized("시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.", "载入方案会立即反映到输入值。保存请使用右侧保存框。", language)}
     </p>
     <div className="mb-3 rounded-2xl bg-[#f4f2ee] px-4 py-3 text-sm font-bold text-[#4f4841]">
       {localized("현재 합산이익", "当前合计利润", language)}{" "}
-      {scenarios[0] !== undefined
-        ? formatMoney(calculateBep(withCalculatedOfflineRevenue(scenarios[0].data)).combinedMonthlyProfit, currency, exchangeRate, true)
+      {activeScenario !== undefined
+        ? formatMoney(calculateBep(withCalculatedOfflineRevenue(activeScenario.data)).combinedMonthlyProfit, currency, exchangeRate, true)
         : "-"}
     </div>
     <div className="overflow-x-auto">
@@ -64,7 +67,8 @@ export const ScenarioQuick = ({
         </tbody>
       </table>
     </div>
-  </CardBlock>
-)
+    </CardBlock>
+  )
+}
 
 export const scenarioResult = (scenario: Scenario): CalculatorResult => calculateBep(scenario.data)

@@ -1,0 +1,589 @@
+{
+  "viewportWidth": 360,
+  "documentClientWidth": 360,
+  "documentScrollWidth": 379,
+  "hangulTextNodes": [
+    {
+      "text": "권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.",
+      "tag": "TEXTAREA",
+      "rect": {
+        "x": 37,
+        "y": 2396,
+        "w": 286,
+        "h": 80
+      }
+    },
+    {
+      "text": "권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.",
+      "tag": "P",
+      "rect": {
+        "x": 37,
+        "y": 3975,
+        "w": 286,
+        "h": 63
+      }
+    },
+    {
+      "text": "링크랜드 현재 가정",
+      "tag": "P",
+      "rect": {
+        "x": 37,
+        "y": 4067,
+        "w": 286,
+        "h": 16
+      }
+    },
+    {
+      "text": "링크랜드 현재 가정",
+      "tag": "TD",
+      "rect": {
+        "x": 37,
+        "y": 4708,
+        "w": 186,
+        "h": 59
+      }
+    },
+    {
+      "text": "링크랜드 현재 가정",
+      "tag": "BUTTON",
+      "rect": {
+        "x": 49,
+        "y": 9080,
+        "w": 111,
+        "h": 20
+      }
+    },
+    {
+      "text": "2026. 6. 10. 오후 1:19:15",
+      "tag": "TD",
+      "rect": {
+        "x": 498,
+        "y": 9065,
+        "w": 197,
+        "h": 49
+      }
+    }
+  ],
+  "beyondViewport": [
+    {
+      "tag": "TABLE",
+      "text": "年份转让费累计利润回收额ROI2年¥2,500,000-¥5,056,800¥3,243,200-57.3%3年¥3,200,000-¥7,585,200¥1,414,800-81.4%4年¥3,800,000-¥10,113,600-¥513,600-106.8%5年¥4,50",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4277,
+        "height": 181
+      },
+      "overflowX": "visible",
+      "className": "w-full min-w-[640px] text-sm"
+    },
+    {
+      "tag": "THEAD",
+      "text": "年份转让费累计利润回收额ROI",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4277,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": ""
+    },
+    {
+      "tag": "TR",
+      "text": "年份转让费累计利润回收额ROI",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4277,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": "border-b border-line text-xs text-steel"
+    },
+    {
+      "tag": "TH",
+      "text": "累计利润",
+      "rect": {
+        "left": 237,
+        "right": 409,
+        "width": 172,
+        "top": 4277,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TH",
+      "text": "回收额",
+      "rect": {
+        "left": 409,
+        "right": 565,
+        "width": 157,
+        "top": 4277,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TH",
+      "text": "ROI",
+      "rect": {
+        "left": 565,
+        "right": 677,
+        "width": 112,
+        "top": 4277,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TBODY",
+      "text": "2年¥2,500,000-¥5,056,800¥3,243,200-57.3%3年¥3,200,000-¥7,585,200¥1,414,800-81.4%4年¥3,800,000-¥10,113,600-¥513,600-106.8%5年¥4,500,000-¥12,642,0",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4309,
+        "height": 148
+      },
+      "overflowX": "visible",
+      "className": ""
+    },
+    {
+      "tag": "TR",
+      "text": "2年¥2,500,000-¥5,056,800¥3,243,200-57.3%",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4309,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "border-b border-line/60"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥5,056,800",
+      "rect": {
+        "left": 237,
+        "right": 409,
+        "width": 172,
+        "top": 4309,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "¥3,243,200",
+      "rect": {
+        "left": 409,
+        "right": 565,
+        "width": 157,
+        "top": 4309,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-57.3%",
+      "rect": {
+        "left": 565,
+        "right": 677,
+        "width": 112,
+        "top": 4309,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TR",
+      "text": "3年¥3,200,000-¥7,585,200¥1,414,800-81.4%",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4346,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "border-b border-line/60"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥7,585,200",
+      "rect": {
+        "left": 237,
+        "right": 409,
+        "width": 172,
+        "top": 4346,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "¥1,414,800",
+      "rect": {
+        "left": 409,
+        "right": 565,
+        "width": 157,
+        "top": 4346,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-81.4%",
+      "rect": {
+        "left": 565,
+        "right": 677,
+        "width": 112,
+        "top": 4346,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TR",
+      "text": "4年¥3,800,000-¥10,113,600-¥513,600-106.8%",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4383,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "border-b border-line/60"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥10,113,600",
+      "rect": {
+        "left": 237,
+        "right": 409,
+        "width": 172,
+        "top": 4383,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥513,600",
+      "rect": {
+        "left": 409,
+        "right": 565,
+        "width": 157,
+        "top": 4383,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-106.8%",
+      "rect": {
+        "left": 565,
+        "right": 677,
+        "width": 112,
+        "top": 4383,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TR",
+      "text": "5年¥4,500,000-¥12,642,000-¥2,342,000-130.8%",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4420,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "border-b border-line/60"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥12,642,000",
+      "rect": {
+        "left": 237,
+        "right": 409,
+        "width": 172,
+        "top": 4420,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥2,342,000",
+      "rect": {
+        "left": 409,
+        "right": 565,
+        "width": 157,
+        "top": 4420,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "-130.8%",
+      "rect": {
+        "left": 565,
+        "right": 677,
+        "width": 112,
+        "top": 4420,
+        "height": 37
+      },
+      "overflowX": "visible",
+      "className": "py-2 text-right"
+    },
+    {
+      "tag": "TABLE",
+      "text": "方案合计销售额合计利润净投资回收操作링크랜드 현재 가정¥82万-¥21万无法回收载入",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4668,
+        "height": 99
+      },
+      "overflowX": "visible",
+      "className": "w-full min-w-[640px] text-sm"
+    },
+    {
+      "tag": "THEAD",
+      "text": "方案合计销售额合计利润净投资回收操作",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4668,
+        "height": 40
+      },
+      "overflowX": "visible",
+      "className": "bg-[#f4f2ee] text-xs text-[#4f4841]"
+    },
+    {
+      "tag": "TR",
+      "text": "方案合计销售额合计利润净投资回收操作",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4668,
+        "height": 40
+      },
+      "overflowX": "visible",
+      "className": ""
+    },
+    {
+      "tag": "TH",
+      "text": "合计利润",
+      "rect": {
+        "left": 342,
+        "right": 444,
+        "width": 102,
+        "top": 4668,
+        "height": 40
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-right"
+    },
+    {
+      "tag": "TH",
+      "text": "净投资回收",
+      "rect": {
+        "left": 444,
+        "right": 563,
+        "width": 118,
+        "top": 4668,
+        "height": 40
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-right"
+    },
+    {
+      "tag": "TH",
+      "text": "操作",
+      "rect": {
+        "left": 563,
+        "right": 677,
+        "width": 114,
+        "top": 4668,
+        "height": 40
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-center"
+    },
+    {
+      "tag": "TBODY",
+      "text": "링크랜드 현재 가정¥82万-¥21万无法回收载入",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4708,
+        "height": 59
+      },
+      "overflowX": "visible",
+      "className": ""
+    },
+    {
+      "tag": "TR",
+      "text": "링크랜드 현재 가정¥82万-¥21万无法回收载入",
+      "rect": {
+        "left": 37,
+        "right": 677,
+        "width": 640,
+        "top": 4708,
+        "height": 59
+      },
+      "overflowX": "visible",
+      "className": "border-b border-slate-200 bg-[#fffbed]"
+    },
+    {
+      "tag": "TD",
+      "text": "-¥21万",
+      "rect": {
+        "left": 342,
+        "right": 444,
+        "width": 102,
+        "top": 4708,
+        "height": 59
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "无法回收",
+      "rect": {
+        "left": 444,
+        "right": 563,
+        "width": 118,
+        "top": 4708,
+        "height": 59
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-right"
+    },
+    {
+      "tag": "TD",
+      "text": "载入",
+      "rect": {
+        "left": 563,
+        "right": 677,
+        "width": 114,
+        "top": 4708,
+        "height": 59
+      },
+      "overflowX": "visible",
+      "className": "px-3 py-3 text-center"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "载入",
+      "rect": {
+        "left": 590,
+        "right": 649,
+        "width": 59,
+        "top": 4720,
+        "height": 34
+      },
+      "overflowX": "visible",
+      "className": "rounded-md border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-[#111827] shadow-sm"
+    },
+    {
+      "tag": "DIV",
+      "text": "Hetras 圣水香氛/生活方式月销售额峰值月销售额客单价转化率(%)贡献利润率(%)以月访客 150,000 人为基准的圣水高销售案例月购买客户: 30,000所需月访客: 150,000日均访客: 5,000相对 Linkland: 2,500% · ¥1500万",
+      "rect": {
+        "left": 37,
+        "right": 379,
+        "width": 342,
+        "top": 4917,
+        "height": 659
+      },
+      "overflowX": "visible",
+      "className": "rounded-xl border border-[#e5dccf] bg-[#fffdfa] p-4"
+    },
+    {
+      "tag": "DIV",
+      "text": "Hetras 圣水香氛/生活方式",
+      "rect": {
+        "left": 54,
+        "right": 362,
+        "width": 308,
+        "top": 4934,
+        "height": 125
+      },
+      "overflowX": "visible",
+      "className": "grid gap-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_36px]"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Hetras 圣水",
+      "rect": {
+        "left": 54,
+        "right": 362,
+        "width": 308,
+        "top": 4934,
+        "height": 38
+      },
+      "overflowX": "hidden",
+      "className": "truncate text-left text-sm text-[#4f4841] hover:text-[#111827] rounded-md border border-slate-200 bg-white px-3 py-2 font-bold"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "香氛/生活方式",
+      "rect": {
+        "left": 54,
+        "right": 362,
+        "width": 308,
+        "top": 4980,
+        "height": 38
+      },
+      "overflowX": "hidden",
+      "className": "truncate text-left text-sm text-[#4f4841] hover:text-[#111827] rounded-md border border-slate-200 bg-white px-3 py-2"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "rect": {
+        "left": 54,
+        "right": 362,
+        "width": 308,
+        "top": 5026,
+        "height": 33
+      },
+      "overflowX": "visible",
+      "className": "rounded-md border border-slate-200 bg-white px-2 py-2 text-[#c65d3b]"
+    }
+  ]
+}

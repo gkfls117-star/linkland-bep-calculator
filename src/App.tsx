@@ -1,7 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { calculateBep, withCalculatedOfflineRevenue } from "./lib/calc"
-import { defaultScenario, newId } from "./lib/defaults"
-import { localized, t } from "./lib/i18n"
+import {
+  defaultScenario,
+  isDefaultJudgmentMemo,
+  isDefaultScenarioName,
+  localizedDefaultJudgmentMemo,
+  localizedDefaultScenarioName,
+  newId,
+} from "./lib/defaults"
+import { localized } from "./lib/i18n"
 import {
   deleteMarketStoreFromSheets,
   deleteScenarioFromSheets,
@@ -11,35 +18,43 @@ import {
 } from "./lib/sheetsApi"
 import {
   loadMarketStores,
+  loadActiveScenarioId,
   loadScenarios,
   loadSettings,
+  saveActiveScenarioId,
   saveMarketStores,
   saveScenarios,
   saveSettings,
+  scenarioByIdOrFirst,
   type AppSettings,
+  withDefaultScenarioFallback,
 } from "./lib/storage"
-import type { CalculatorInput, MoneyUnit } from "./types/calculator"
+import type { CalculatorInput, Language, MoneyUnit } from "./types/calculator"
 import type { MarketStore } from "./types/market"
 import type { Scenario, SyncState } from "./types/scenario"
 import { useScenarioAutosave } from "./hooks/useScenarioAutosave"
 import { useSheetsReload } from "./hooks/useSheetsReload"
-import { Dashboard } from "./components/Dashboard"
+import { AppHeader } from "./components/AppHeader"
 import { InputPanel } from "./components/InputPanel"
-import { LanguageCurrencySwitch } from "./components/LanguageCurrencySwitch"
-import { MarketAnalysis } from "./components/MarketAnalysis"
-import { ScenarioQuick } from "./components/ScenarioQuick"
-import { ScenarioTable } from "./components/ScenarioTable"
+import { ResultsSection } from "./components/ResultsSection"
 import { SidebarNav } from "./components/SidebarNav"
 
 export const App = () => {
+  const [initialScenario] = useState(() => {
+    const initialScenarios = loadScenarios()
+    return {
+      active: scenarioByIdOrFirst(initialScenarios, loadActiveScenarioId()),
+      scenarios: initialScenarios,
+    }
+  })
   const [settings, setSettings] = useState<AppSettings>(() => loadSettings())
-  const [scenarios, setScenarios] = useState<readonly Scenario[]>(() => loadScenarios())
+  const [scenarios, setScenarios] = useState<readonly Scenario[]>(initialScenario.scenarios)
   const [stores, setStores] = useState<readonly MarketStore[]>(() => loadMarketStores())
-  const [activeScenarioId, setActiveScenarioId] = useState<string>(() => loadScenarios()[0]?.id ?? "default")
+  const [activeScenarioId, setActiveScenarioId] = useState<string>(initialScenario.active.id)
   const [input, setInput] = useState<CalculatorInput>(() =>
-    withCalculatedOfflineRevenue(loadScenarios()[0]?.data ?? defaultScenario().data),
+    withCalculatedOfflineRevenue(initialScenario.active.data),
   )
-  const [saveName, setSaveName] = useState(() => loadScenarios()[0]?.name ?? "링크랜드 현재 가정")
+  const [saveName, setSaveName] = useState(() => initialScenario.active.name)
   const [highlightedKey, setHighlightedKey] = useState<string | null>(null)
   const [syncState, setSyncState] = useState<SyncState>({
     kind: "local",
@@ -52,21 +67,24 @@ export const App = () => {
   )
   const currency: MoneyUnit = settings.language === "zh" ? "CNY" : "KRW"
   const result = useMemo(() => calculateBep(input), [input])
-  const activeScenario = scenarios.find((scenario) => scenario.id === activeScenarioId)
+  const displayScenarios = useMemo(
+    () => scenarios.map((scenario) => localizeDefaultScenarioForDisplay(scenario, settings.language)),
+    [scenarios, settings.language],
+  )
+  const activeScenario = displayScenarios.find((scenario) => scenario.id === activeScenarioId)
 
   const applyScenarios = useCallback((next: readonly Scenario[]): void => {
-    const visible = next
+    const visible = withDefaultScenarioFallback(next
       .filter((scenario) => !scenario.isDeleted)
-      .map((scenario) => ({ ...scenario, data: withCalculatedOfflineRevenue(scenario.data) }))
+      .map((scenario) => ({ ...scenario, data: withCalculatedOfflineRevenue(scenario.data) })))
     setScenarios(visible)
     saveScenarios(visible)
-    const first = visible[0]
-    if (first !== undefined) {
-      setActiveScenarioId(first.id)
-      setInput(withCalculatedOfflineRevenue(first.data))
-      setSaveName(first.name)
-    }
-  }, [])
+    const selected = scenarioByIdOrFirst(visible, loadActiveScenarioId())
+    setActiveScenarioId(selected.id)
+    saveActiveScenarioId(selected.id)
+    setInput(withCalculatedOfflineRevenue(selected.data))
+    setSaveName(isDefaultScenarioName(selected.name) ? localizedDefaultScenarioName(settings.language) : selected.name)
+  }, [settings.language])
 
   const { isReadyForAutosave, reload } = useSheetsReload({
     applyScenarios,
@@ -79,6 +97,17 @@ export const App = () => {
   useEffect(() => {
     saveSettings(settings)
   }, [settings])
+
+  useEffect(() => {
+    setSaveName((current) =>
+      isDefaultScenarioName(current) ? localizedDefaultScenarioName(settings.language) : current,
+    )
+    setInput((current) =>
+      isDefaultJudgmentMemo(current.judgmentMemo)
+        ? { ...current, judgmentMemo: localizedDefaultJudgmentMemo(settings.language) }
+        : current,
+    )
+  }, [settings.language])
 
   useScenarioAutosave({
     activeScenarioId,
@@ -93,8 +122,17 @@ export const App = () => {
 
   const selectScenario = (scenario: Scenario): void => {
     setActiveScenarioId(scenario.id)
+    saveActiveScenarioId(scenario.id)
     setInput(withCalculatedOfflineRevenue(scenario.data))
-    setSaveName(scenario.name)
+    setSaveName(isDefaultScenarioName(scenario.name) ? localizedDefaultScenarioName(settings.language) : scenario.name)
+  }
+
+  const resetDefaultScenario = (): void => {
+    const scenario = defaultScenario()
+    const next = [scenario, ...scenarios.filter((candidate) => candidate.id !== scenario.id)]
+    setScenarios(next)
+    saveScenarios(next)
+    selectScenario(scenario)
   }
 
   const upsertScenario = async (isNew: boolean): Promise<void> => {
@@ -111,6 +149,7 @@ export const App = () => {
     setScenarios(localNext)
     saveScenarios(localNext)
     setActiveScenarioId(scenario.id)
+    saveActiveScenarioId(scenario.id)
     if (!hasSheetsConfig(sheetsConfig)) return
     try {
       applyScenarios(await saveScenarioToSheets(sheetsConfig, scenario, isNew ? "addScenario" : "updateScenario"))
@@ -121,7 +160,7 @@ export const App = () => {
   }
 
   const deleteScenario = async (scenario: Scenario): Promise<void> => {
-    const next = scenarios.filter((candidate) => candidate.id !== scenario.id)
+    const next = withDefaultScenarioFallback(scenarios.filter((candidate) => candidate.id !== scenario.id))
     setScenarios(next)
     saveScenarios(next)
     if (scenario.id === activeScenarioId && next[0] !== undefined) selectScenario(next[0])
@@ -164,28 +203,14 @@ export const App = () => {
   return (
     <main className="min-h-screen bg-[#fbfaf8] text-[#111827]">
       <div className="mx-auto max-w-[1500px] px-4 py-5 lg:px-5">
-        <header className="mb-5 grid gap-3 lg:grid-cols-[1fr_360px]">
-          <div>
-            <h1 className="text-[26px] font-black tracking-normal text-[#05070d]">
-              {localized("성수 연무장길 링크랜드 BEP / 임차 투자 계산기", "圣水练武场路 Linkland BEP / 租赁投资计算器", settings.language)}
-            </h1>
-            <p className="mt-1 max-w-2xl text-sm text-[#6b625c]">
-              {localized(
-                "입력값 변경 시 대시보드가 바로 반영되는 안정 버전입니다.",
-                "输入值变化时仪表盘会立即反映的稳定版本。",
-                settings.language,
-              )}
-            </p>
-          </div>
-          <LanguageCurrencySwitch
-            settings={settings}
-            syncMessage={syncState.message}
-            onSettingsChange={setSettings}
-            onReload={() => {
-              void reload()
-            }}
-          />
-        </header>
+        <AppHeader
+          settings={settings}
+          syncMessage={syncState.message}
+          onSettingsChange={setSettings}
+          onReload={() => {
+            void reload()
+          }}
+        />
         <div className="grid items-start gap-4 min-[1350px]:grid-cols-[150px_440px_minmax(0,1fr)]">
           <SidebarNav language={settings.language} />
           <InputPanel
@@ -194,58 +219,53 @@ export const App = () => {
             highlightedKey={highlightedKey}
             onChange={(next) => setInput(withCalculatedOfflineRevenue(next))}
           />
-          <section className="min-w-0 space-y-4">
-            <Dashboard
-              input={input}
-              result={result}
-              language={settings.language}
-              currency={currency}
-              exchangeRate={settings.exchangeRate}
-              scenarioName={activeScenario?.name ?? saveName}
-              saveName={saveName}
-              onSaveNameChange={setSaveName}
-              onOverwrite={() => {
-                void upsertScenario(false)
-              }}
-              onSaveAs={() => {
-                void upsertScenario(true)
-              }}
-              onHighlight={setHighlightedKey}
-            />
-            <ScenarioQuick
-              scenarios={scenarios}
-              activeId={activeScenarioId}
-              language={settings.language}
-              currency={currency}
-              exchangeRate={settings.exchangeRate}
-              onSelect={selectScenario}
-            />
-            <MarketAnalysis
-              stores={stores}
-              language={settings.language}
-              currency={currency}
-              exchangeRate={settings.exchangeRate}
-              linklandRevenue={input.offlineMonthlyRevenue}
-              onSave={(store, isNew) => {
-                void saveStore(store, isNew)
-              }}
-              onDelete={(store) => {
-                void deleteStore(store)
-              }}
-            />
-            <ScenarioTable
-              scenarios={scenarios}
-              language={settings.language}
-              currency={currency}
-              exchangeRate={settings.exchangeRate}
-              onSelect={selectScenario}
-              onDelete={(scenario) => {
-                void deleteScenario(scenario)
-              }}
-            />
-          </section>
+          <ResultsSection
+            input={input}
+            result={result}
+            language={settings.language}
+            currency={currency}
+            exchangeRate={settings.exchangeRate}
+            scenarioName={activeScenario?.name ?? saveName}
+            saveName={saveName}
+            onSaveNameChange={setSaveName}
+            onOverwrite={() => {
+              void upsertScenario(false)
+            }}
+            onSaveAs={() => {
+              void upsertScenario(true)
+            }}
+            onResetDefault={resetDefaultScenario}
+            onHighlight={setHighlightedKey}
+            scenarios={displayScenarios}
+            activeScenarioId={activeScenarioId}
+            onSelectScenario={selectScenario}
+            stores={stores}
+            onSaveStore={(store, isNew) => {
+              void saveStore(store, isNew)
+            }}
+            onDeleteStore={(store) => {
+              void deleteStore(store)
+            }}
+            onDeleteScenario={(scenario) => {
+              void deleteScenario(scenario)
+            }}
+          />
         </div>
       </div>
     </main>
   )
+}
+
+const localizeDefaultScenarioForDisplay = (scenario: Scenario, language: Language): Scenario => {
+  if (scenario.id !== "default_linkland") return scenario
+  return {
+    ...scenario,
+    name: isDefaultScenarioName(scenario.name) ? localizedDefaultScenarioName(language) : scenario.name,
+    data: {
+      ...scenario.data,
+      judgmentMemo: isDefaultJudgmentMemo(scenario.data.judgmentMemo)
+        ? localizedDefaultJudgmentMemo(language)
+        : scenario.data.judgmentMemo,
+    },
+  }
 }

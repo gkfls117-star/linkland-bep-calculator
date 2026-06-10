@@ -1,0 +1,6 @@
+## RED task-3 missing oracle smoke
+2026년 06월 10일 수 오후  1:04:11
+Error: Project(s) "chrome" not found. Available projects: ""
+    at Object.filterProjects (C:\Users\gkfls\AppData\Local\npm-cache\_npx\e41f203b7505f1fb\node_modules\playwright\lib\runner\index.js:2084:11)
+    at runTests (C:\Users\gkfls\AppData\Local\npm-cache\_npx\e41f203b7505f1fb\node_modules\playwright\lib\cli\testActions.js:59:30)
+    at async _Command.<anonymous> (C:\Users\gkfls\AppData\Local\npm-cache\_npx\e41f203b7505f1fb\node_modules\playwright\lib\program.js:50:7)

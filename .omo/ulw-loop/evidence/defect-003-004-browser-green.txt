@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1A[2K[1/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:128:1 › DEFECT-003 @defect-003 Given 360px mobile viewport When using Chinese CNY Then document has no page-level horizontal overflow
+[1A[2K[2/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:146:1 › DEFECT-004 @defect-004 Given default scenario When switching to Chinese Then default scenario name and memo are localized
+[1A[2K  2 passed (5.2s)

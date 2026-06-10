@@ -1,0 +1,22 @@
+
+Running 18 tests using 1 worker
+
+[1A[2K[1/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:8:1 › Defect regression harness is ready @defect-harness
+[1A[2K[2/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:13:1 › DEFECT-001 @defect-001 Given recoverable investment When profit is positive Then dashboard payback uses net invested cash
+[1A[2K[3/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:28:1 › DEFECT-002 @defect-002 Given invalid negative and over-limit values When typing Then inputs clamp before calculation
+[1A[2K[4/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:45:1 › DEFECT-005 @defect-005 Given sidebar anchors When clicking market and scenarios Then page scrolls to real sections
+[1A[2K[5/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:59:1 › DEFECT-006 @defect-006 Given stale local cache When Sheets returns empty lists Then stale rows are removed
+[1A[2K[6/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:128:1 › DEFECT-003 @defect-003 Given 360px mobile viewport When using Chinese CNY Then document has no page-level horizontal overflow
+[1A[2K[7/18] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:146:1 › DEFECT-004 @defect-004 Given default scenario When switching to Chinese Then default scenario name and memo are localized
+[1A[2K[8/18] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:4:1 › Responsive visual harness is ready @ui-harness
+[1A[2K[9/18] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:10:1 › Dashboard and input panel keep the polished calculator rhythm @ui-dashboard-input-polish
+[1A[2K[10/18] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:23:1 › Lower sections keep consistent cards, tables, and market editing UI @ui-lower-sections-polish
+[1A[2K[11/18] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:36:1 › Responsive bilingual review has no page overflow and preserves readable KPI surfaces @ui-responsive-bilingual-polish @final-ui-review
+[1A[2K[12/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:28:1 › Browser harness opens the actual calculator @qa-harness
+[1A[2K[13/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:40:1 › Calculation oracle reads visible dashboard values @oracle-smoke
+[1A[2K[14/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:52:1 › DEFECT-001 Given only deleted cached scenarios When opening the app Then the default preset is restored @explore-scenarios @defect-001
+[1A[2K[15/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:77:1 › DEFECT-003 DEFECT-004 Given a previously loaded preset When refreshing Then the active preset and quick profit stay aligned @explore-scenarios @defect-003 @defect-004
+[1A[2K[16/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:119:1 › DEFECT-005 Given dirty assumptions When restoring defaults Then the calculator returns to the default preset @explore-scenarios @defect-005
+[1A[2K[17/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:132:1 › Given investment rows change When adding recoverable cash Then dashboard totals follow the row state @explore-dynamic-items
+[1A[2K[18/18] [chrome] › tests\e2e\linkland-user-review-loop.spec.ts:172:1 › Given a real investor walkthrough When editing assumptions and reviewing outputs Then core flows stay coherent @final-full-walkthrough
+[1A[2K  18 passed (25.0s)

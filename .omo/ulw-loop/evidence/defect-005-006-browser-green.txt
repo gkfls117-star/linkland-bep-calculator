@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1A[2K[1/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:45:1 › DEFECT-005 @defect-005 Given sidebar anchors When clicking market and scenarios Then page scrolls to real sections
+[1A[2K[2/2] [chrome] › tests\e2e\linkland-defect-regressions.spec.ts:59:1 › DEFECT-006 @defect-006 Given stale local cache When Sheets returns empty lists Then stale rows are removed
+[1A[2K  2 passed (5.5s)

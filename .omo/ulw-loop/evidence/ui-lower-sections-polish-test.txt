@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:23:1 › Lower sections keep consistent cards, tables, and market editing UI @ui-lower-sections-polish
+[1A[2K  1 passed (3.7s)

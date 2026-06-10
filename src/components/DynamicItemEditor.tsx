@@ -81,6 +81,7 @@ export const DynamicItemEditor = ({
               <FormattedNumberInput
                 className="w-full"
                 decimals={itemType === "rate" ? 2 : 0}
+                {...itemBounds(itemType)}
                 value={item.value}
                 onChange={(value) => update(item.id, { value })}
               />
@@ -165,6 +166,9 @@ const sectionTitleClass = (section: ExpenseSection): string => {
   const color = section === "onlineCosts" ? "bg-[#edf7ff] text-[#0369a1]" : "bg-[#fbf5df] text-[#b45309]"
   return `rounded-xl px-3 py-2 text-sm font-black ${color}`
 }
+
+const itemBounds = (itemType: DynamicItem["type"]): { readonly min: number; readonly max?: number } =>
+  itemType === "rate" ? { min: 0, max: 100 } : { min: 0 }
 
 const isLockedOnlineRateItem = (section: ExpenseSection, item: DynamicItem): boolean =>
   section === "onlineCosts" && (item.id === "online_platform" || item.id === "online_ads")

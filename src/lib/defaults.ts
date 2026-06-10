@@ -1,10 +1,14 @@
-import type { CalculatorInput, DynamicItem } from "../types/calculator"
+import type { CalculatorInput, DynamicItem, Language } from "../types/calculator"
 import type { Scenario } from "../types/scenario"
 import { defaultMarketStores } from "./marketDefaults"
 
 export { defaultMarketStores }
 
 export const DEFAULT_EXCHANGE_RATE = 217.19
+export const DEFAULT_SCENARIO_NAME_KO = "링크랜드 현재 가정"
+export const DEFAULT_SCENARIO_NAME_ZH = "Linkland 当前假设"
+export const DEFAULT_JUDGMENT_MEMO_KO = "권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다."
+export const DEFAULT_JUDGMENT_MEMO_ZH = "以可回收转让费为前提，第3年以后回收的方案相对稳定。"
 
 export const newId = (prefix: string): string =>
   `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`
@@ -40,7 +44,7 @@ export const defaultInput: CalculatorInput = {
   transferPremiumYear3: 320000000,
   transferPremiumYear4: 380000000,
   transferPremiumYear5: 450000000,
-  judgmentMemo: "권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.",
+  judgmentMemo: DEFAULT_JUDGMENT_MEMO_KO,
   offlineFixed: [
     {
       id: "offline_rent",
@@ -161,9 +165,21 @@ export const defaultInput: CalculatorInput = {
 
 export const defaultScenario = (): Scenario => ({
   id: "default_linkland",
-  name: "링크랜드 현재 가정",
+  name: DEFAULT_SCENARIO_NAME_KO,
   data: defaultInput,
   updatedAt: new Date().toISOString(),
   updatedBy: "local",
   isDeleted: false,
 })
+
+export const localizedDefaultScenarioName = (language: Language): string =>
+  language === "zh" ? DEFAULT_SCENARIO_NAME_ZH : DEFAULT_SCENARIO_NAME_KO
+
+export const localizedDefaultJudgmentMemo = (language: Language): string =>
+  language === "zh" ? DEFAULT_JUDGMENT_MEMO_ZH : DEFAULT_JUDGMENT_MEMO_KO
+
+export const isDefaultScenarioName = (value: string): boolean =>
+  value === DEFAULT_SCENARIO_NAME_KO || value === DEFAULT_SCENARIO_NAME_ZH
+
+export const isDefaultJudgmentMemo = (value: string): boolean =>
+  value === DEFAULT_JUDGMENT_MEMO_KO || value === DEFAULT_JUDGMENT_MEMO_ZH

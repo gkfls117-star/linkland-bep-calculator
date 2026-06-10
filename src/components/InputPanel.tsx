@@ -37,6 +37,7 @@ export const InputPanel = ({ input, language, highlightedKey, onChange }: InputP
                 <FormattedNumberInput
                   className="w-36"
                   decimals={field.unit === "%" ? 2 : 0}
+                  {...numberBounds(field)}
                   readOnly={field.readOnly === true}
                   value={Number(input[field.key])}
                   onChange={(value) => {
@@ -120,9 +121,12 @@ const numberFields = (language: Language): readonly NumberField[] => [
 ]
 
 const rowClass = (active: boolean): string =>
-  `grid grid-cols-[1fr_auto_auto] items-center gap-2 text-sm text-[#4f4841] ${
+  `grid grid-cols-[minmax(0,1fr)_minmax(0,144px)_auto] items-center gap-2 text-sm text-[#4f4841] ${
     active ? "row-focus rounded-md" : ""
   }`
+
+const numberBounds = (field: NumberField): { readonly min: number; readonly max?: number } =>
+  field.unit === "%" ? { min: 0, max: 100 } : { min: 0 }
 
 const sectionClass = (group: NumberField["group"]): string => {
   const color = group === "online" ? "bg-[#edf7ff] text-[#0369a1]" : "bg-[#fbf5df] text-[#b45309]"

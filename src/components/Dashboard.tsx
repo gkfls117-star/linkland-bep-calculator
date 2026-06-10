@@ -16,6 +16,7 @@ type DashboardProps = {
   readonly onSaveNameChange: (name: string) => void
   readonly onOverwrite: () => void
   readonly onSaveAs: () => void
+  readonly onResetDefault: () => void
   readonly onHighlight: (key: string | null) => void
 }
 
@@ -30,6 +31,7 @@ export const Dashboard = ({
   onSaveNameChange,
   onOverwrite,
   onSaveAs,
+  onResetDefault,
   onHighlight,
 }: DashboardProps) => (
   <div id="dashboard" className="space-y-5">
@@ -82,9 +84,10 @@ export const Dashboard = ({
         <div className="mt-4 space-y-2 border-t border-slate-200 pt-3">
           <p className="text-xs font-black text-[#7b746d]">{t("currentSave", language)} · {scenarioName}</p>
           <input className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm" value={saveName} onChange={(event) => onSaveNameChange(event.target.value)} />
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-3 gap-2">
             <button className="rounded-md bg-[#111827] px-3 py-2 text-xs font-black text-white" type="button" onClick={onOverwrite}>{t("overwrite", language)}</button>
             <button className="rounded-md border border-[#111827] px-3 py-2 text-xs font-black text-[#111827]" type="button" onClick={onSaveAs}>{t("saveAs", language)}</button>
+            <button className="rounded-md border border-[#d9cfc1] px-3 py-2 text-xs font-black text-[#5f6f7a]" type="button" onClick={onResetDefault}>{localized("기본값 복원", "恢复默认", language)}</button>
           </div>
         </div>
       </CardBlock>

@@ -54,7 +54,7 @@ describe("calculateBep", () => {
     expect(result.totals.onlineMonthlyCost).toBe(15300000)
   })
 
-  it("Given recoverable investment When calculating payback Then monthly recovery uses full initial cash", () => {
+  it("DEFECT-001 Given recoverable investment When calculating payback Then monthly recovery uses net invested cash", () => {
     const recoverableItem = defaultInput.investment.find((item) => item.id === "invest_deposit")
     const nonRecoverableItem = defaultInput.investment.find((item) => item.id === "invest_fitout")
     expect(recoverableItem).toBeDefined()
@@ -76,7 +76,7 @@ describe("calculateBep", () => {
 
     expect(result.initialCash).toBe(100000000)
     expect(result.totals.nonRecoverableInvestment).toBe(20000000)
-    expect(result.paybackMonths).toBeCloseTo(100000000 / result.combinedMonthlyProfit)
+    expect(result.paybackMonths).toBeCloseTo(20000000 / result.combinedMonthlyProfit)
     expect(result.transferRecovery[0]?.recoveredAmount).toBeCloseTo(
       result.combinedMonthlyProfit * 24 + defaultInput.transferPremiumYear2 + 80000000,
     )

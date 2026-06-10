@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:36:1 › Responsive bilingual review has no page overflow and preserves readable KPI surfaces @ui-responsive-bilingual-polish @final-ui-review
+[1A[2K  1 passed (5.7s)

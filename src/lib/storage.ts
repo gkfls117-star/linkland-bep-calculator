@@ -7,6 +7,7 @@ import { normalizeInput, normalizeMarketStores } from "./normalize"
 const SCENARIOS_KEY = "linkland:bep:scenarios"
 const MARKET_KEY = "linkland:bep:marketStores"
 const SETTINGS_KEY = "linkland:bep:settings"
+const ACTIVE_SCENARIO_KEY = "linkland:bep:activeScenarioId"
 
 export type AppSettings = {
   readonly language: Language
@@ -55,14 +56,33 @@ export const loadScenarios = (): readonly Scenario[] => {
   try {
     const value: unknown = JSON.parse(raw)
     if (!Array.isArray(value)) return [defaultScenario()]
-    return value
+    const scenarios = value
       .map((entry) => normalizeCachedScenario(entry))
       .filter((scenario) => scenario !== null)
+      .filter((scenario) => !scenario.isDeleted)
       .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    return withDefaultScenarioFallback(scenarios)
   } catch (error) {
     if (error instanceof SyntaxError) return [defaultScenario()]
     throw error
   }
+}
+
+export const withDefaultScenarioFallback = (scenarios: readonly Scenario[]): readonly Scenario[] =>
+  scenarios.length > 0 ? scenarios : [defaultScenario()]
+
+export const loadActiveScenarioId = (): string | null => localStorage.getItem(ACTIVE_SCENARIO_KEY)
+
+export const saveActiveScenarioId = (scenarioId: string): void => {
+  localStorage.setItem(ACTIVE_SCENARIO_KEY, scenarioId)
+}
+
+export const scenarioByIdOrFirst = (
+  scenarios: readonly Scenario[],
+  scenarioId: string | null,
+): Scenario => {
+  const fallbackScenarios = withDefaultScenarioFallback(scenarios)
+  return fallbackScenarios.find((scenario) => scenario.id === scenarioId) ?? fallbackScenarios[0] ?? defaultScenario()
 }
 
 export const saveScenarios = (scenarios: readonly Scenario[]): void => {

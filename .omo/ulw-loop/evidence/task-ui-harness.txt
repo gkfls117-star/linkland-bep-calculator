@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:3:1 › Responsive visual harness is ready @ui-harness
+[1A[2K  1 passed (5.5s)

@@ -1,0 +1,65 @@
+
+> linkland-seongsu-bep@1.0.0 test
+> vitest run --run src/lib/calc.test.ts src/components/FormattedNumberInput.test.ts
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.8 [39m[90mC:/Users/gkfls/OneDrive/Desktop/정하린/바이브코딩/링크랜드 BEP[39m
+
+ [31m❯[39m src/components/FormattedNumberInput.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 7[2mms[22m[39m
+     [32m✓[39m Given a formatted typing value When committing during typing Then it returns the numeric value[32m 2[2mms[22m[39m
+     [32m✓[39m Given a transient typing value When committing during typing Then it waits for blur[32m 0[2mms[22m[39m
+[31m     [31m×[31m DEFECT-002 Given non-negative business input When value is negative Then it clamps to zero[39m[32m 3[2mms[22m[39m
+[31m     [31m×[31m DEFECT-002 Given percentage business input When value is over 100 Then it clamps to 100[39m[32m 0[2mms[22m[39m
+ [31m❯[39m src/lib/calc.test.ts [2m([22m[2m7 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 11[2mms[22m[39m
+     [32m✓[39m Given default Linkland inputs When calculating BEP Then it returns a high-risk no-payback baseline[32m 3[2mms[22m[39m
+     [32m✓[39m Given a recoverable investment item When calculating totals Then recoverable cash is tracked separately[32m 0[2mms[22m[39m
+     [32m✓[39m Given visitor assumptions When calculating offline revenue Then monthly sales are derived automatically[32m 0[2mms[22m[39m
+     [32m✓[39m Given product cost rates When calculating contribution Then the remaining margin is used[32m 0[2mms[22m[39m
+     [32m✓[39m Given locked online rate costs When calculating online profit Then they stay proportional to online revenue[32m 0[2mms[22m[39m
+[31m     [31m×[31m DEFECT-001 Given recoverable investment When calculating payback Then monthly recovery uses net invested cash[39m[32m 4[2mms[22m[39m
+     [32m✓[39m Given Hetras Seongsu data When deriving visitor metrics Then customers and visitors match the sheet assumptions[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/components/FormattedNumberInput.test.ts[2m > [22mclampNumber[2m > [22mDEFECT-002 Given non-negative business input When value is negative Then it clamps to zero
+[31m[1mTypeError[22m: clampNumber is not a function[39m
+[36m [2m❯[22m src/components/FormattedNumberInput.test.ts:[2m19:12[22m[39m
+    [90m 17|[39m [34mdescribe[39m([32m"clampNumber"[39m[33m,[39m () [33m=>[39m {
+    [90m 18|[39m   it("DEFECT-002 Given non-negative business input When value is negat…
+    [90m 19|[39m     [34mexpect[39m([34mclampNumber[39m([33m-[39m[34m1000[39m[33m,[39m { min[33m:[39m [34m0[39m }))[33m.[39m[34mtoBe[39m([34m0[39m)
+    [90m   |[39m            [31m^[39m
+    [90m 20|[39m   })
+    [90m 21|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/FormattedNumberInput.test.ts[2m > [22mclampNumber[2m > [22mDEFECT-002 Given percentage business input When value is over 100 Then it clamps to 100
+[31m[1mTypeError[22m: clampNumber is not a function[39m
+[36m [2m❯[22m src/components/FormattedNumberInput.test.ts:[2m23:12[22m[39m
+    [90m 21|[39m
+    [90m 22|[39m   it("DEFECT-002 Given percentage business input When value is over 10…
+    [90m 23|[39m     [34mexpect[39m([34mclampNumber[39m([34m150[39m[33m,[39m { min[33m:[39m [34m0[39m[33m,[39m max[33m:[39m [34m100[39m }))[33m.[39m[34mtoBe[39m([34m100[39m)
+    [90m   |[39m            [31m^[39m
+    [90m 24|[39m   })
+    [90m 25|[39m })
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/lib/calc.test.ts[2m > [22mcalculateBep[2m > [22mDEFECT-001 Given recoverable investment When calculating payback Then monthly recovery uses net invested cash
+[31m[1mAssertionError[22m: expected 4.385964912280702 to be close to 0.8771929824561403, received difference is 3.5087719298245617, but expected 0.005[39m
+[36m [2m❯[22m src/lib/calc.test.ts:[2m79:34[22m[39m
+    [90m 77|[39m     [34mexpect[39m(result[33m.[39minitialCash)[33m.[39m[34mtoBe[39m([34m100000000[39m)
+    [90m 78|[39m     [34mexpect[39m(result[33m.[39mtotals[33m.[39mnonRecoverableInvestment)[33m.[39m[34mtoBe[39m([34m20000000[39m)
+    [90m 79|[39m     expect(result.paybackMonths).toBeCloseTo(20000000 / result.combine…
+    [90m   |[39m                                  [31m^[39m
+    [90m 80|[39m     [34mexpect[39m(result[33m.[39mtransferRecovery[[34m0[39m][33m?.[39mrecoveredAmount)[33m.[39m[34mtoBeCloseTo[39m(
+    [90m 81|[39m       result.combinedMonthlyProfit * 24 + defaultInput.transferPremium…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m8 passed[39m[22m[90m (11)[39m
+[2m   Start at [22m 13:19:43
+[2m   Duration [22m 1.12s[2m (transform 115ms, setup 0ms, import 181ms, tests 18ms, environment 1.48s)[22m
+

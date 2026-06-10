@@ -1,0 +1,17 @@
+
+> linkland-seongsu-bep@1.0.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.8 [39m[90mC:/Users/gkfls/OneDrive/Desktop/정하린/바이브코딩/링크랜드 BEP[39m
+
+ [32m✓[39m src/lib/calc.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/components/FormattedNumberInput.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/lib/autosave.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m src/lib/storage.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+[2m   Start at [22m 13:54:25
+[2m   Duration [22m 2.20s[2m (transform 355ms, setup 0ms, import 521ms, tests 26ms, environment 6.14s)[22m
+

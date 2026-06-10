@@ -77,8 +77,9 @@ export const calculateBep = (input: CalculatorInput): CalculatorResult => {
     calculatedInput.avgOrderValue > 0 && calculatedInput.conversionRate > 0
       ? offlineBepRevenue / calculatedInput.avgOrderValue / percent(calculatedInput.conversionRate)
       : 0
+  const paybackBaseInvestment = Math.max(totals.nonRecoverableInvestment, 0)
   const paybackMonths =
-    combinedMonthlyProfit > 0 ? totals.initialCash / combinedMonthlyProfit : null
+    combinedMonthlyProfit > 0 ? paybackBaseInvestment / combinedMonthlyProfit : null
 
   return {
     offlineContribution,

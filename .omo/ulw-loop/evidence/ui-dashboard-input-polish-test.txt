@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chrome] › tests\e2e\linkland-responsive-visual.spec.ts:10:1 › Dashboard and input panel keep the polished calculator rhythm @ui-dashboard-input-polish
+[1A[2K  1 passed (3.8s)

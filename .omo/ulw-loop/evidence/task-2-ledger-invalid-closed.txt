@@ -1,0 +1,9 @@
+missing section: OPEN DEFECTS
+missing section: REOPENED DEFECTS
+missing section: REVIEWER APPROVED
+missing section: Evidence Index
+CLOSED DEFECT-001 missing RED command
+CLOSED DEFECT-001 missing GREEN command
+CLOSED DEFECT-001 missing QA command
+CLOSED DEFECT-001 missing evidence
+CLOSED DEFECT-001 missing cleanup

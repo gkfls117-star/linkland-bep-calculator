@@ -1,0 +1,1233 @@
+[
+  {
+    "label": "clean-default",
+    "keyInputs": [
+      {
+        "i": 3,
+        "type": "text",
+        "value": "150,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "월 방문객\n명"
+      },
+      {
+        "i": 4,
+        "type": "text",
+        "value": "0.8",
+        "readOnly": false,
+        "checked": false,
+        "label": "구매 전환율\n%"
+      },
+      {
+        "i": 5,
+        "type": "text",
+        "value": "50,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "객단가\n원"
+      },
+      {
+        "i": 6,
+        "type": "text",
+        "value": "60,000,000",
+        "readOnly": true,
+        "checked": false,
+        "label": "오프라인 월매출\n원"
+      },
+      {
+        "i": 7,
+        "type": "text",
+        "value": "62",
+        "readOnly": false,
+        "checked": false,
+        "label": "자체 제조 제품 원가율\n%"
+      },
+      {
+        "i": 8,
+        "type": "text",
+        "value": "22,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 월매출\n원"
+      },
+      {
+        "i": 9,
+        "type": "text",
+        "value": "55",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 제품 원가율\n%"
+      },
+      {
+        "i": 10,
+        "type": "text",
+        "value": "250,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "2년차 권리금\n원"
+      },
+      {
+        "i": 11,
+        "type": "text",
+        "value": "320,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "3년차 권리금\n원"
+      },
+      {
+        "i": 12,
+        "type": "text",
+        "value": "380,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "4년차 권리금\n원"
+      },
+      {
+        "i": 13,
+        "type": "text",
+        "value": "450,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "5년차 권리금\n원"
+      },
+      {
+        "i": 14,
+        "type": "text",
+        "value": "30,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 15,
+        "type": "text",
+        "value": "12,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 16,
+        "type": "text",
+        "value": "4,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 17,
+        "type": "text",
+        "value": "2,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 18,
+        "type": "text",
+        "value": "5.5",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 19,
+        "type": "text",
+        "value": "8",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 20,
+        "type": "text",
+        "value": "1,800,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 21,
+        "type": "text",
+        "value": "300,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 22,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 23,
+        "type": "text",
+        "value": "200,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 24,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 25,
+        "type": "text",
+        "value": "180,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 26,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": false,
+        "label": "회수 가능"
+      },
+      {
+        "i": 27,
+        "type": "text",
+        "value": "80,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 28,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 29,
+        "type": "text",
+        "value": "링크랜드 현재 가정",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      }
+    ],
+    "dashboardText": "합산 월매출\n\n₩82,000,000\n\n합산 월 영업이익\n\n-₩21,070,000\n\n오프라인 이익\n\n-₩2620만\n\n온라인 이익\n\n₩513만\n\n투자비 / 회수\n\n₩8억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩60,000,000\n\n공헌이익\n\n₩22,800,000\n\n고정비\n\n₩49,000,000\n\n영업이익\n\n-₩2620만\n\n온라인 손익\n\n월매출\n\n₩22,000,000\n\n공헌이익\n\n₩9,900,000\n\n온라인 고정비\n\n₩4,770,000\n\n순수익\n\n₩513만\n\n합산/투자\n\n합산 매출\n\n₩82,000,000\n\n합산 영업이익\n\n-₩21,070,000\n\n초기 필요 현금\n\n₩760,000,000\n\n회수 가능 투자비\n\n₩580,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · 링크랜드 현재 가정\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩505,680,000\t₩324,320,000\t-57.3%\n3년차\t₩320,000,000\t-₩758,520,000\t₩141,480,000\t-81.4%\n4년차\t₩380,000,000\t-₩1,011,360,000\t-₩51,360,000\t-106.8%\n5년차\t₩450,000,000\t-₩1,264,200,000\t-₩234,200,000\t-130.8%",
+    "quickText": "시나리오 빠른 비교\n\n시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.\n\n현재 합산이익 -₩2107만\n시나리오\t합산매출\t합산이익\t순투자 회수\t작업\n링크랜드 현재 가정\t₩8200만\t-₩2107만\t회수 불가\t불러오기",
+    "scenarios": null
+  },
+  {
+    "label": "after-save-A",
+    "keyInputs": [
+      {
+        "i": 3,
+        "type": "text",
+        "value": "120,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "월 방문객\n명"
+      },
+      {
+        "i": 4,
+        "type": "text",
+        "value": "2.5",
+        "readOnly": false,
+        "checked": false,
+        "label": "구매 전환율\n%"
+      },
+      {
+        "i": 5,
+        "type": "text",
+        "value": "40,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "객단가\n원"
+      },
+      {
+        "i": 6,
+        "type": "text",
+        "value": "120,000,000",
+        "readOnly": true,
+        "checked": false,
+        "label": "오프라인 월매출\n원"
+      },
+      {
+        "i": 7,
+        "type": "text",
+        "value": "70",
+        "readOnly": false,
+        "checked": false,
+        "label": "자체 제조 제품 원가율\n%"
+      },
+      {
+        "i": 8,
+        "type": "text",
+        "value": "35,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 월매출\n원"
+      },
+      {
+        "i": 9,
+        "type": "text",
+        "value": "60",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 제품 원가율\n%"
+      },
+      {
+        "i": 10,
+        "type": "text",
+        "value": "250,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "2년차 권리금\n원"
+      },
+      {
+        "i": 11,
+        "type": "text",
+        "value": "320,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "3년차 권리금\n원"
+      },
+      {
+        "i": 12,
+        "type": "text",
+        "value": "380,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "4년차 권리금\n원"
+      },
+      {
+        "i": 13,
+        "type": "text",
+        "value": "450,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "5년차 권리금\n원"
+      },
+      {
+        "i": 14,
+        "type": "text",
+        "value": "25,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 15,
+        "type": "text",
+        "value": "12,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 16,
+        "type": "text",
+        "value": "4,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 17,
+        "type": "text",
+        "value": "2,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 18,
+        "type": "text",
+        "value": "4.5",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 19,
+        "type": "text",
+        "value": "8",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 20,
+        "type": "text",
+        "value": "1,800,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 21,
+        "type": "text",
+        "value": "100,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 22,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 23,
+        "type": "text",
+        "value": "200,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 24,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 25,
+        "type": "text",
+        "value": "180,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 26,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": false,
+        "label": "회수 가능"
+      },
+      {
+        "i": 27,
+        "type": "text",
+        "value": "80,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 28,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 29,
+        "type": "text",
+        "value": "QA Preset A - high offline",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      }
+    ],
+    "dashboardText": "합산 월매출\n\n₩155,000,000\n\n합산 월 영업이익\n\n-₩175,000\n\n오프라인 이익\n\n-₩800만\n\n온라인 이익\n\n₩783만\n\n투자비 / 회수\n\n₩6억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩120,000,000\n\n공헌이익\n\n₩36,000,000\n\n고정비\n\n₩44,000,000\n\n영업이익\n\n-₩800만\n\n온라인 손익\n\n월매출\n\n₩35,000,000\n\n공헌이익\n\n₩14,000,000\n\n온라인 고정비\n\n₩6,175,000\n\n순수익\n\n₩783만\n\n합산/투자\n\n합산 매출\n\n₩155,000,000\n\n합산 영업이익\n\n-₩175,000\n\n초기 필요 현금\n\n₩560,000,000\n\n회수 가능 투자비\n\n₩380,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · QA Preset A - high offline\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩4,200,000\t₩625,800,000\t11.8%\n3년차\t₩320,000,000\t-₩6,300,000\t₩693,700,000\t23.9%\n4년차\t₩380,000,000\t-₩8,400,000\t₩751,600,000\t34.2%\n5년차\t₩450,000,000\t-₩10,500,000\t₩819,500,000\t46.3%",
+    "quickText": "시나리오 빠른 비교\n\n시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.\n\n현재 합산이익 -₩17만\n시나리오\t합산매출\t합산이익\t순투자 회수\t작업\nQA Preset A - high offline\t₩2억\t-₩17만\t회수 불가\t불러오기\n링크랜드 현재 가정\t₩8200만\t-₩2107만\t회수 불가\t불러오기",
+    "scenarios": [
+      {
+        "id": "scenario_mq7k7ezt_3x7cbq",
+        "name": "QA Preset A - high offline",
+        "monthlyVisitors": 120000,
+        "avgOrderValue": 40000,
+        "conversionRate": 2.5,
+        "onlineMonthlyRevenue": 35000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "default_linkland",
+        "name": "링크랜드 현재 가정",
+        "monthlyVisitors": 150000,
+        "avgOrderValue": 50000,
+        "conversionRate": 0.8,
+        "onlineMonthlyRevenue": 22000000,
+        "offlineFixedCount": 4
+      }
+    ]
+  },
+  {
+    "label": "after-save-B",
+    "keyInputs": [
+      {
+        "i": 3,
+        "type": "text",
+        "value": "80,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "월 방문객\n명"
+      },
+      {
+        "i": 4,
+        "type": "text",
+        "value": "0.5",
+        "readOnly": false,
+        "checked": false,
+        "label": "구매 전환율\n%"
+      },
+      {
+        "i": 5,
+        "type": "text",
+        "value": "25,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "객단가\n원"
+      },
+      {
+        "i": 6,
+        "type": "text",
+        "value": "10,000,000",
+        "readOnly": true,
+        "checked": false,
+        "label": "오프라인 월매출\n원"
+      },
+      {
+        "i": 7,
+        "type": "text",
+        "value": "45",
+        "readOnly": false,
+        "checked": false,
+        "label": "자체 제조 제품 원가율\n%"
+      },
+      {
+        "i": 8,
+        "type": "text",
+        "value": "5,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 월매출\n원"
+      },
+      {
+        "i": 9,
+        "type": "text",
+        "value": "35",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 제품 원가율\n%"
+      },
+      {
+        "i": 10,
+        "type": "text",
+        "value": "250,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "2년차 권리금\n원"
+      },
+      {
+        "i": 11,
+        "type": "text",
+        "value": "320,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "3년차 권리금\n원"
+      },
+      {
+        "i": 12,
+        "type": "text",
+        "value": "380,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "4년차 권리금\n원"
+      },
+      {
+        "i": 13,
+        "type": "text",
+        "value": "450,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "5년차 권리금\n원"
+      },
+      {
+        "i": 14,
+        "type": "text",
+        "value": "42,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 15,
+        "type": "text",
+        "value": "12,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 16,
+        "type": "text",
+        "value": "4,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 17,
+        "type": "text",
+        "value": "2,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 18,
+        "type": "text",
+        "value": "9",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 19,
+        "type": "text",
+        "value": "8",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 20,
+        "type": "text",
+        "value": "1,800,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 21,
+        "type": "text",
+        "value": "500,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 22,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 23,
+        "type": "text",
+        "value": "200,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 24,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 25,
+        "type": "text",
+        "value": "180,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 26,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": false,
+        "label": "회수 가능"
+      },
+      {
+        "i": 27,
+        "type": "text",
+        "value": "80,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 28,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 29,
+        "type": "text",
+        "value": "QA Preset B - low conversion",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      }
+    ],
+    "dashboardText": "합산 월매출\n\n₩15,000,000\n\n합산 월 영업이익\n\n-₩54,900,000\n\n오프라인 이익\n\n-₩5550만\n\n온라인 이익\n\n₩60만\n\n투자비 / 회수\n\n₩10억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩10,000,000\n\n공헌이익\n\n₩5,500,000\n\n고정비\n\n₩61,000,000\n\n영업이익\n\n-₩5550만\n\n온라인 손익\n\n월매출\n\n₩5,000,000\n\n공헌이익\n\n₩3,250,000\n\n온라인 고정비\n\n₩2,650,000\n\n순수익\n\n₩60만\n\n합산/투자\n\n합산 매출\n\n₩15,000,000\n\n합산 영업이익\n\n-₩54,900,000\n\n초기 필요 현금\n\n₩960,000,000\n\n회수 가능 투자비\n\n₩780,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · QA Preset B - low conversion\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩1,317,600,000\t-₩287,600,000\t-130%\n3년차\t₩320,000,000\t-₩1,976,400,000\t-₩876,400,000\t-191.3%\n4년차\t₩380,000,000\t-₩2,635,200,000\t-₩1,475,200,000\t-253.7%\n5년차\t₩450,000,000\t-₩3,294,000,000\t-₩2,064,000,000\t-315%",
+    "quickText": "시나리오 빠른 비교\n\n시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.\n\n현재 합산이익 -₩5490만\n시나리오\t합산매출\t합산이익\t순투자 회수\t작업\nQA Preset B - low conversion\t₩1500만\t-₩5490만\t회수 불가\t불러오기\nQA Preset A - high offline\t₩2억\t-₩17만\t회수 불가\t불러오기\n링크랜드 현재 가정\t₩8200만\t-₩2107만\t회수 불가\t불러오기",
+    "scenarios": [
+      {
+        "id": "scenario_mq7k7fxx_m6qszo",
+        "name": "QA Preset B - low conversion",
+        "monthlyVisitors": 80000,
+        "avgOrderValue": 25000,
+        "conversionRate": 0.5,
+        "onlineMonthlyRevenue": 5000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "scenario_mq7k7ezt_3x7cbq",
+        "name": "QA Preset A - high offline",
+        "monthlyVisitors": 120000,
+        "avgOrderValue": 40000,
+        "conversionRate": 2.5,
+        "onlineMonthlyRevenue": 35000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "default_linkland",
+        "name": "링크랜드 현재 가정",
+        "monthlyVisitors": 150000,
+        "avgOrderValue": 50000,
+        "conversionRate": 0.8,
+        "onlineMonthlyRevenue": 22000000,
+        "offlineFixedCount": 4
+      }
+    ]
+  },
+  {
+    "label": "after-load-A-from-quick",
+    "keyInputs": [
+      {
+        "i": 3,
+        "type": "text",
+        "value": "120,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "월 방문객\n명"
+      },
+      {
+        "i": 4,
+        "type": "text",
+        "value": "2.5",
+        "readOnly": false,
+        "checked": false,
+        "label": "구매 전환율\n%"
+      },
+      {
+        "i": 5,
+        "type": "text",
+        "value": "40,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "객단가\n원"
+      },
+      {
+        "i": 6,
+        "type": "text",
+        "value": "120,000,000",
+        "readOnly": true,
+        "checked": false,
+        "label": "오프라인 월매출\n원"
+      },
+      {
+        "i": 7,
+        "type": "text",
+        "value": "70",
+        "readOnly": false,
+        "checked": false,
+        "label": "자체 제조 제품 원가율\n%"
+      },
+      {
+        "i": 8,
+        "type": "text",
+        "value": "35,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 월매출\n원"
+      },
+      {
+        "i": 9,
+        "type": "text",
+        "value": "60",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 제품 원가율\n%"
+      },
+      {
+        "i": 10,
+        "type": "text",
+        "value": "250,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "2년차 권리금\n원"
+      },
+      {
+        "i": 11,
+        "type": "text",
+        "value": "320,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "3년차 권리금\n원"
+      },
+      {
+        "i": 12,
+        "type": "text",
+        "value": "380,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "4년차 권리금\n원"
+      },
+      {
+        "i": 13,
+        "type": "text",
+        "value": "450,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "5년차 권리금\n원"
+      },
+      {
+        "i": 14,
+        "type": "text",
+        "value": "25,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 15,
+        "type": "text",
+        "value": "12,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 16,
+        "type": "text",
+        "value": "4,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 17,
+        "type": "text",
+        "value": "2,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 18,
+        "type": "text",
+        "value": "4.5",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 19,
+        "type": "text",
+        "value": "8",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 20,
+        "type": "text",
+        "value": "1,800,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 21,
+        "type": "text",
+        "value": "100,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 22,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 23,
+        "type": "text",
+        "value": "200,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 24,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 25,
+        "type": "text",
+        "value": "180,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 26,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": false,
+        "label": "회수 가능"
+      },
+      {
+        "i": 27,
+        "type": "text",
+        "value": "80,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 28,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 29,
+        "type": "text",
+        "value": "QA Preset A - high offline",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      }
+    ],
+    "dashboardText": "합산 월매출\n\n₩155,000,000\n\n합산 월 영업이익\n\n-₩175,000\n\n오프라인 이익\n\n-₩800만\n\n온라인 이익\n\n₩783만\n\n투자비 / 회수\n\n₩6억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩120,000,000\n\n공헌이익\n\n₩36,000,000\n\n고정비\n\n₩44,000,000\n\n영업이익\n\n-₩800만\n\n온라인 손익\n\n월매출\n\n₩35,000,000\n\n공헌이익\n\n₩14,000,000\n\n온라인 고정비\n\n₩6,175,000\n\n순수익\n\n₩783만\n\n합산/투자\n\n합산 매출\n\n₩155,000,000\n\n합산 영업이익\n\n-₩175,000\n\n초기 필요 현금\n\n₩560,000,000\n\n회수 가능 투자비\n\n₩380,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · QA Preset A - high offline\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩4,200,000\t₩625,800,000\t11.8%\n3년차\t₩320,000,000\t-₩6,300,000\t₩693,700,000\t23.9%\n4년차\t₩380,000,000\t-₩8,400,000\t₩751,600,000\t34.2%\n5년차\t₩450,000,000\t-₩10,500,000\t₩819,500,000\t46.3%",
+    "quickText": "시나리오 빠른 비교\n\n시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.\n\n현재 합산이익 -₩5490만\n시나리오\t합산매출\t합산이익\t순투자 회수\t작업\nQA Preset B - low conversion\t₩1500만\t-₩5490만\t회수 불가\t불러오기\nQA Preset A - high offline\t₩2억\t-₩17만\t회수 불가\t불러오기\n링크랜드 현재 가정\t₩8200만\t-₩2107만\t회수 불가\t불러오기",
+    "scenarios": [
+      {
+        "id": "scenario_mq7k7fxx_m6qszo",
+        "name": "QA Preset B - low conversion",
+        "monthlyVisitors": 80000,
+        "avgOrderValue": 25000,
+        "conversionRate": 0.5,
+        "onlineMonthlyRevenue": 5000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "scenario_mq7k7ezt_3x7cbq",
+        "name": "QA Preset A - high offline",
+        "monthlyVisitors": 120000,
+        "avgOrderValue": 40000,
+        "conversionRate": 2.5,
+        "onlineMonthlyRevenue": 35000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "default_linkland",
+        "name": "링크랜드 현재 가정",
+        "monthlyVisitors": 150000,
+        "avgOrderValue": 50000,
+        "conversionRate": 0.8,
+        "onlineMonthlyRevenue": 22000000,
+        "offlineFixedCount": 4
+      }
+    ]
+  },
+  {
+    "label": "after-reload-following-A-load",
+    "keyInputs": [
+      {
+        "i": 3,
+        "type": "text",
+        "value": "80,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "월 방문객\n명"
+      },
+      {
+        "i": 4,
+        "type": "text",
+        "value": "0.5",
+        "readOnly": false,
+        "checked": false,
+        "label": "구매 전환율\n%"
+      },
+      {
+        "i": 5,
+        "type": "text",
+        "value": "25,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "객단가\n원"
+      },
+      {
+        "i": 6,
+        "type": "text",
+        "value": "10,000,000",
+        "readOnly": true,
+        "checked": false,
+        "label": "오프라인 월매출\n원"
+      },
+      {
+        "i": 7,
+        "type": "text",
+        "value": "45",
+        "readOnly": false,
+        "checked": false,
+        "label": "자체 제조 제품 원가율\n%"
+      },
+      {
+        "i": 8,
+        "type": "text",
+        "value": "5,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 월매출\n원"
+      },
+      {
+        "i": 9,
+        "type": "text",
+        "value": "35",
+        "readOnly": false,
+        "checked": false,
+        "label": "온라인 제품 원가율\n%"
+      },
+      {
+        "i": 10,
+        "type": "text",
+        "value": "250,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "2년차 권리금\n원"
+      },
+      {
+        "i": 11,
+        "type": "text",
+        "value": "320,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "3년차 권리금\n원"
+      },
+      {
+        "i": 12,
+        "type": "text",
+        "value": "380,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "4년차 권리금\n원"
+      },
+      {
+        "i": 13,
+        "type": "text",
+        "value": "450,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": "5년차 권리금\n원"
+      },
+      {
+        "i": 14,
+        "type": "text",
+        "value": "42,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 15,
+        "type": "text",
+        "value": "12,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 16,
+        "type": "text",
+        "value": "4,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 17,
+        "type": "text",
+        "value": "2,500,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 18,
+        "type": "text",
+        "value": "9",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 19,
+        "type": "text",
+        "value": "8",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 20,
+        "type": "text",
+        "value": "1,800,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 21,
+        "type": "text",
+        "value": "500,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 22,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 23,
+        "type": "text",
+        "value": "200,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 24,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 25,
+        "type": "text",
+        "value": "180,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 26,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": false,
+        "label": "회수 가능"
+      },
+      {
+        "i": 27,
+        "type": "text",
+        "value": "80,000,000",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      },
+      {
+        "i": 28,
+        "type": "checkbox",
+        "value": "on",
+        "readOnly": false,
+        "checked": true,
+        "label": "회수 가능"
+      },
+      {
+        "i": 29,
+        "type": "text",
+        "value": "QA Preset B - low conversion",
+        "readOnly": false,
+        "checked": false,
+        "label": ""
+      }
+    ],
+    "dashboardText": "합산 월매출\n\n₩15,000,000\n\n합산 월 영업이익\n\n-₩54,900,000\n\n오프라인 이익\n\n-₩5550만\n\n온라인 이익\n\n₩60만\n\n투자비 / 회수\n\n₩10억 · 회수 불가\n\n오프라인 손익\n\n월매출\n\n₩10,000,000\n\n공헌이익\n\n₩5,500,000\n\n고정비\n\n₩61,000,000\n\n영업이익\n\n-₩5550만\n\n온라인 손익\n\n월매출\n\n₩5,000,000\n\n공헌이익\n\n₩3,250,000\n\n온라인 고정비\n\n₩2,650,000\n\n순수익\n\n₩60만\n\n합산/투자\n\n합산 매출\n\n₩15,000,000\n\n합산 영업이익\n\n-₩54,900,000\n\n초기 필요 현금\n\n₩960,000,000\n\n회수 가능 투자비\n\n₩780,000,000\n\n순투자 회수기간\n\n회수 불가\n\n권리금 회수 가능성을 전제로 3년차 이후 회수 시나리오가 안정권입니다.\n\n현재 입력값 저장 · QA Preset B - low conversion\n\n덮어쓰기 저장\n다른이름 저장\n2~5년차 양도/권리금 회수\n연차\t양도/권리금\t누적 이익\t회수액\tROI\n2년차\t₩250,000,000\t-₩1,317,600,000\t-₩287,600,000\t-130%\n3년차\t₩320,000,000\t-₩1,976,400,000\t-₩876,400,000\t-191.3%\n4년차\t₩380,000,000\t-₩2,635,200,000\t-₩1,475,200,000\t-253.7%\n5년차\t₩450,000,000\t-₩3,294,000,000\t-₩2,064,000,000\t-315%",
+    "quickText": "시나리오 빠른 비교\n\n시나리오를 불러와도 입력값에 바로 반영됩니다. 저장은 좌측 하단 박스에서 합니다.\n\n현재 합산이익 -₩5490만\n시나리오\t합산매출\t합산이익\t순투자 회수\t작업\nQA Preset B - low conversion\t₩1500만\t-₩5490만\t회수 불가\t불러오기\nQA Preset A - high offline\t₩2억\t-₩17만\t회수 불가\t불러오기\n링크랜드 현재 가정\t₩8200만\t-₩2107만\t회수 불가\t불러오기",
+    "scenarios": [
+      {
+        "id": "scenario_mq7k7fxx_m6qszo",
+        "name": "QA Preset B - low conversion",
+        "monthlyVisitors": 80000,
+        "avgOrderValue": 25000,
+        "conversionRate": 0.5,
+        "onlineMonthlyRevenue": 5000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "scenario_mq7k7ezt_3x7cbq",
+        "name": "QA Preset A - high offline",
+        "monthlyVisitors": 120000,
+        "avgOrderValue": 40000,
+        "conversionRate": 2.5,
+        "onlineMonthlyRevenue": 35000000,
+        "offlineFixedCount": 4
+      },
+      {
+        "id": "default_linkland",
+        "name": "링크랜드 현재 가정",
+        "monthlyVisitors": 150000,
+        "avgOrderValue": 50000,
+        "conversionRate": 0.8,
+        "onlineMonthlyRevenue": 22000000,
+        "offlineFixedCount": 4
+      }
+    ]
+  },
+  {
+    "label": "reset-control-scan",
+    "resetControls": [
+      "현재 계산기 기본 오프라인 매출 가정",
+      "QA Preset B - low conversion",
+      "QA Preset A - high offline"
+    ]
+  }
+]
